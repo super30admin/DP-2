@@ -23,14 +23,14 @@ public:
                     if(nums[i][j]<minVal){minVal=nums[i][j];index = j;}
                 }
             }else{
-                int j=0;
-                while(j<3){
-                    if(index!=j && nums[i][j]<minVal){
-                        minVal=nums[i][j];
+                int prevIndex = index;
+//                cout<<index<<" minVal\n";
+                for(int j = 0; j<3; j++){
+                    if(prevIndex!=j && nums[i][j]<minVal){
+                        minVal=nums[i][j]; index = j;
                     }
-                    j++;
                 }
-                index=j;
+//                cout<<index<<" index After\n";
             }
             retSum += minVal;
         }
