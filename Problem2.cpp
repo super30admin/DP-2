@@ -1,7 +1,13 @@
 //
 // Created by shazmaan on 7/11/2019.
 //
-
+// Time Complexity : O(mn)
+// Space Complexity : O(mn)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Confusing to figure the logic out but easy once you do.
+// Approach:
+// Using the matrix way to solve DP problem. Calculated by finding the maximum number of ways in which
+// a coin can be made from.
 #include <iostream>
 #include <algorithm>
 #include <vector>
