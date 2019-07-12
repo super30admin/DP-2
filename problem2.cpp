@@ -15,15 +15,15 @@ using namespace std;
 class Solution {
     public:
         int change(int amount, int[] coins) {
-            
-        int dp[coins.length+1][amount+1];
+
+        int dp[coins.size()+1][amount+1];
 
         dp[0][0] = 1;
 
-        for(int i =1; i<coins.length+1; i++)
+        for(int i =1; i<coins.size()+1; i++)
             dp[i][0] = 1;
 
-        for(int i =1; i<coins.length+1;i++)
+        for(int i =1; i<coins.size()+1;i++)
             for(int j =1; j<amount+1 ; j++)
             {
                 if(j<coins[i-1])
