@@ -12,21 +12,23 @@ class CountCoinChange {
             dp[0][j] = 9999;
 
         //calc dp array
-        for(int i=1;i<dp.length;i++){
-            for(int j=1;j<dp[0].length;j++){
+        // for(int i=1;i<dp.length;i++){
+        //     for(int j=1;j<dp[0].length;j++){
 
-                //copy from top
-                if(j < coins[i-1]){
-                    dp[i][j] = dp[i-1][j];
-                }
-                //compare and calc
-                else{
-                    dp[i][j] = Math.min(dp[i-1][j], dp[i][j - coins[i-1]] + 1);
-                }
+        //         //copy from top
+        //         if(j < coins[i-1]){
+        //             dp[i][j] = dp[i-1][j];
+        //         }
+        //         //compare and calc
+        //         else{
+        //             dp[i][j] = Math.min(dp[i-1][j], dp[i][j - coins[i-1]] + 1);
+        //         }
 
-                System.out.print(dp[i][j] + " ");
-            }
-            System.out.println();
+        //         System.out.print(dp[i][j] + " ");
+        //     }
+        //     System.out.println();
+
+                
         }
 
         
