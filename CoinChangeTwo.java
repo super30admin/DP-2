@@ -1,6 +1,12 @@
-
+package com;
 import java.util.Arrays; 
 
+
+//Time complexity of this function: O(mn) 
+//Space Complexity of this function: O(n) 
+
+//Did this code successfully run on Leetcode : no
+//Any problem you faced while coding this: no
 public class CoinChangeTwo {
 	public static long countWays(int S[], int m, int n) 
     { 
