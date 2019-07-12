@@ -1,6 +1,15 @@
 //
 // Created by shazmaan on 7/12/2019.
 //
+// Time Complexity : O(mn)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Confusing to figure the logic out but easy once you do.
+// Approach:
+// [[17,5,17]] -> find min element from current index and save in minVal. and update the dirtyIndex to point to
+// minVal. next iteration, avoid the dirty index while calculating minVal and update dirtyIndex for the next iteration and
+// repeat.
+
 
 #include <iostream>
 #include <algorithm>
