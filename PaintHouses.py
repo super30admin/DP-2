@@ -5,6 +5,7 @@
 class Problem2:
 	def PaintHouse1(self, costs):
 		# Using 2D array to store the costs
+		# the array dimension is no.of colors X no.of houses
 		paintCosts = [[0 for i in range(len(costs))] for j in range(len(costs[0]))]
 		paintCosts[0][0] = costs[0][0]
 		paintCosts[1][0] = costs[0][1]
@@ -46,7 +47,44 @@ class Problem2:
 		print(paintColor)
 		return paintCosts[-1]
 
+	def PaintHouse3(self, costs):
+		# Using 2D array to store the costs
+		# the array dimension is no.of houses X no.of colors
+		paintCosts = [[0 for i in range(len(costs[0]))] for j in range(len(costs))]
+		paintCosts[0][0] = costs[0][0]
+		paintCosts[0][1] = costs[0][1]
+		paintCosts[0][2] = costs[0][2]
+		for i in range(1, len(costs)):
+			paintCosts[i][0] = costs[i][0] + min(paintCosts[i - 1][1], paintCosts[i - 1][2])
+			paintCosts[i][1] = costs[i][1] + min(paintCosts[i - 1][0], paintCosts[i - 1][2])
+			paintCosts[i][2] = costs[i][2] + min(paintCosts[i - 1][0], paintCosts[i - 1][1])
+		return min(paintCosts[-1])
+
+	def PaintHouse4(self, costs):
+		# Using a 1D array of constant size(number of colors)
+		single_arr = [costs[0][0], costs[0][1], costs[0][2]]
+		for i in range(1, len(costs)):
+			temp1 = single_arr[0]
+			temp2 = single_arr[1]
+			single_arr[0] = costs[i][0] + min(temp2, single_arr[2])
+			single_arr[1] = costs[i][1] + min(temp1, single_arr[2])
+			single_arr[2] = costs[i][2] + min(temp1, temp2)
+		return min(single_arr)
+
+	def PaintHouse5(self, costs):
+		# Using the costs array itself, performing an in place updation
+		if len(costs) == 1:
+			return min(costs[0])
+		for i in range(1, len(costs)):
+			costs[i][0] += min(costs[i - 1][1], costs[i - 1][2])
+			costs[i][1] += min(costs[i - 1][0], costs[i - 1][2])
+			costs[i][2] += min(costs[i - 1][0], costs[i - 1][1])
+		return min(costs[-1])
+
 if __name__ == '__main__':
 	pH = Problem2()
 	print(pH.PaintHouse1([[17, 2, 1],[16,16,1],[14,3,19],[3,1,8]]))
-	print(pH.PaintHouse2([[17, 2, 1],[16,16,1],[14,3,19],[3,1,8]]))
+	#print(pH.PaintHouse2([[17, 2, 1],[16,16,1],[14,3,19],[3,1,8]]))
+	print(pH.PaintHouse3([[17, 2, 1],[16,16,1],[14,3,19],[3,1,8]]))
+	print(pH.PaintHouse4([[17, 2, 1],[16,16,1],[14,3,19],[3,1,8]]))
+	print(pH.PaintHouse5([[17, 2, 1],[16,16,1],[14,3,19],[3,1,8]]))
