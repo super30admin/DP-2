@@ -1,0 +1,21 @@
+
+//  time complexity = O(n) n=no of houses
+// space complexity = O(1) const
+public class PaintHouse 
+{
+	public static int minimum(int[][] a) {
+		int row=a.length;
+		int col=a[0].length;
+		for(int i=1;i<row;i++)
+		{
+				a[i][0]+=Math.min(a[i-1][1], a[i-1][2]);
+				a[i][1]+=Math.min(a[i-1][0], a[i-1][2]);
+				a[i][2]+=Math.min(a[i-1][0], a[i-1][1]);
+		}
+		return Math.min(a[row-1][0], Math.min(a[row-1][1], a[row-1][2]));
+	}
+	public static void main(String[] args) {
+		int[][] a=new int[][] {{2,5,7},{6,9,4},{1,7,4},{6,9,2},{1,5,7},{9,4,7}};
+		System.out.println(minimum(a));
+	}
+}
