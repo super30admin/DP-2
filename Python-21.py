@@ -9,13 +9,15 @@ def minCost(self, costs):
         r=len(costs)
         c=len(costs[0])
         dp=[[0]*c for _ in range(r)]
-        dp[0][0]=costs[0][0]
-        dp[0][1]=costs[0][1]
-        dp[0][2]=costs[0][2]
         
         #edge case
         if (costs == [] or len(costs) == 0):
              return 0
+        
+        dp[0][0]=costs[0][0]
+        dp[0][1]=costs[0][1]
+        dp[0][2]=costs[0][2]
+        
         
         n=len(dp)
         for i  in range(1,n):
