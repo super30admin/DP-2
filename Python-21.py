@@ -14,8 +14,8 @@ def minCost(self, costs):
         dp[0][2]=costs[0][2]
         
         #edge case
-        if not costs:
-            return 0
+        if (costs == [] or len(costs) == 0):
+             return 0
         
         n=len(dp)
         for i  in range(1,n):
