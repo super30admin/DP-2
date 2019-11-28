@@ -68,3 +68,31 @@ class Solution {
         return Math.min(costs[n-1][0],Math.min(costs[n-1][2],costs[n-1][1]));
         }  
 }
+// Dynamic Programing using temp variables
+//Time Complexity - O(n)
+//Space Complexity - O(1)
+// This solution also worked on LeetCode
+
+class Solution {
+    public int minCost(int[][] costs) {
+        if(costs==null || costs.length==0)  return 0;
+        //initialize the temp variables with first row values
+        int lastR = costs[0][0];
+        int lastB = costs[0][1];
+        int lastG = costs[0][2];
+        int currR = lastR;
+        int currB = lastB;
+        int currG = lastG;
+        for(int i=1;i<costs.length;i++){
+            lastR = Math.min(currB,currG)+costs[i][0];  // use the curr temp variable values since the last variables will be replaced
+            lastB = Math.min(currR,currG)+costs[i][1];
+            lastG = Math.min(currB,currR)+costs[i][2];
+            currR = lastR;
+            currB = lastB;
+            currG = lastG;
+            
+        }
+        int n = costs.length;
+        return Math.min(currR,Math.min(currB,currG)); //return minimum of all the three last calculated values 
+        }  
+}
