@@ -30,15 +30,14 @@ class Solution{
 	}
 }
 
-
 // Time Complexity : O(n^2)
 // Space Complexity : O(n^2)
 // Did this code successfully run on Leetcode : Yes
 // Description: DP Solution
 class Solution{
-	public int change(int[][] cost){
+	public int change(int amount, int[] coins ){
 		
-		int[][] dp = new int[cost.length + 1][amount + 1];
+		int[][] dp = new int[coins.length + 1][amount + 1];
 		
 		int m = dp.length;
 		int n = dp[0].length;
@@ -46,11 +45,11 @@ class Solution{
 		for(int i=1;i<m;i++){
 			dp[i][0] = 1;
 			for(int j=1;j<n;j++){
-				if(j<cost[i-j]){
+				if(j < coins[i-1]){
 					dp[i][j] = dp[i-1][j];
 				}
 				else{
-					dp[i][j] = dp[i-1][j] + dp[i][j - cost[i-1]] ;
+					dp[i][j] = dp[i-1][j] + dp[i][j - coins[i-1]] ;
 				}
 			}
 		}
