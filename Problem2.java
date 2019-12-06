@@ -22,7 +22,7 @@ class Solution {
 
 // Dynamic Programing
 // Time Complexity : O(S*n)  -- where S is the amount and n is the number of denominations
-// Space Complexity : O(S*n) -- LeetCode shows it O(n) why?
+// Space Complexity : O(S*n) 
 // This code worked on LeetCode
 
 class Solution {
