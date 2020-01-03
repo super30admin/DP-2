@@ -1,5 +1,5 @@
-Time Complexity-O(n)
-Space Complexity-O(n) Here 'n' is the amount
+Time Complexity-O(n*m) Here 'n' is the amount and 'm' is the size of the input vector
+HSpace Complexity-O(n) Here 'n' is the amount
 Did the code run on Leetcode? Yes
 
 #include <iostream>
