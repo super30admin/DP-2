@@ -34,7 +34,7 @@ Explanation: there are four ways to make up the amount:
 
 5=1+1+1+1+1
 Example 2:
-
+    
 Input: amount = 3, coins = [2]
 Output: 0
 Explanation: the amount of 3 cannot be made up just with coins of 2.
