@@ -1,5 +1,5 @@
 # Time Complexity :O(M*N) M = amount, N = no: of coins
-# Space Complexity : O(M)
+# Space Complexity : O(M*N)
 # Did this code successfully run on Leetcode : yes
 # Any problem you faced while coding this : No
 class Solution:
