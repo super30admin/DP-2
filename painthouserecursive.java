@@ -7,28 +7,30 @@
 class Solution {
     public int minCost(int[][] costs) {
         if(costs==null || costs.length==0) return 0;
-        return Math.min(helper(costs,0,0),Math.min(helper(costs,0,1),helper(costs,0,2)));
+        return Math.min(helper(costs,0,0,0),Math.min(helper(costs,0,1,0),helper(costs,0,2,0)));
     }
-    
-    public int helper(int[][]costs, int index1,int index2){
-        //base case
-        int mincost=costs[index1][index2];
-        if(index1==costs.length-1) {
-            //Don't do anything, Return mincost;
+    private int helper(int[][] costs, int row,int color,int price){
+        //base
+        if(row == costs.length){
+            return price;
         }
+        
+        int case1=9999;
+        int case2=9999;
+        int case3=9999;
+        
         //logic
-        //red
-        else if(index2==0) {
-            mincost+=Math.min( helper(costs,index1+1,1),helper(costs,index1+1,2));
+        if(color==0){
+            case1 = Math.min(helper(costs,row+1,1,price+costs[row][1]),helper(costs,row+1,2,price+costs[row][2]));
         }
-        //blue
-        else if(index2==1)  {
-            mincost += Math.min(helper(costs,index1+1,0),helper(costs,index1+1,2));
+        if(color==1){
+           case2= Math.min(helper(costs,row+1,0,price+costs[row][0]),helper(costs,row+1,2,price+costs[row][2]));
         }
-        //green
-        else if(index2==2) {
-            mincost += Math.min(helper(costs,index1+1,0),helper(costs,index1+1,1));
+        if(color==2){
+            case3= Math.min(helper(costs,row+1,0,price+costs[row][0]),helper(costs,row+1,1,price+costs[row][1]));
         }
-        return mincost;
+            return Math.min(case1,Math.min(case2,case3));
     }
+
+        
 }
