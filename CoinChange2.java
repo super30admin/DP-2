@@ -73,4 +73,53 @@ class Solution {
         
         return case1+case2;
     }
+
+/*
+    More Efficient Solution
+    Time complexity :  O(M*N) M = no of coins N =  amount
+    Space Complexity :  O(M*N)  M = no of coins N =  amount
+
+    Worked on leetcode : YES
+
+    we will maintain DP table for getting the count for the ways we can get perticular amount
+    we will take the decision based on we will choose the coin or not
+    if we will choose the coin then go back the coins denomination times in  same row  and add that t
+    to the result we will get from the same column above row which stores the way we get amount
+    without the that coin
+
+
+*/
+ public int change_DP_solution(int amount, int[] coins) {
+        
+        int [][] dp = new int [coins.length + 1 ] [ amount + 1 ];
+//         first column for getting zero amount by not taking anything to 1 way
+        for(int i=0;i<dp.length;i++){
+            dp[i][0] = 1 ;
+        }
+        
+//         first row zero
+        for(int i = 1;i < dp[0].length; i++){
+            dp[0][i] = 0;
+        }
+        
+        for(int i=1;i< dp.length; i++){
+            for(int j = 1; j< dp[0].length; j++){
+                if (j < coins[i-1]){
+                    dp[i][j] = dp[i-1][j];
+                }
+                else{
+                    dp[i] [j] = dp[i-1] [j] /* if  we are not choosing perticular coin */
+                        /* if we are choosing the coin go back coins times  in same */ 
+                    + dp[i] [j - coins[i-1 ] ] ;
+                }
+                
+            }
+        }
+        
+        int n = coins.length ;
+        int result = dp[n][amount];
+        return result;
+        
+    }
+   
 }
