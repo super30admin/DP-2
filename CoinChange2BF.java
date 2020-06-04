@@ -1,4 +1,4 @@
-// Time Complexity :m2^n where n is the length of the coins array and m is the amount.
+// Time Complexity :O(m2^n) where n is the length of the coins array and m is the amount.
 // Space Complexity :O(nm) n where n is the length of the coins array and m is the amount.
 // Did this code successfully run on Leetcode :No - Time Limit Exceded.
 // Any problem you faced while coding this :No
