@@ -27,9 +27,13 @@ Minimum cost: 2 + 5 + 3 = 10.
                     N =  house
     space Complexity : recursive space would be O(N)
     Is worked on leetcode : Haven't checked Locked problem but it is working for cases in REadme
-    
+
  */
 public class PaintHouse {
+
+    /*
+        BruteForce
+    */
     public int minCost(int[][]costs) {
         int case1=helper(costs,0,0, 0);
         int case2  = helper(costs,0,1,0);
@@ -64,11 +68,32 @@ public class PaintHouse {
         return Math.min( case1, Math.min(case2,case3));
 
         
+
+    }
+
+/*
+    Time Complexity :  O(M*N) N = no of house and M  = no of color
+    Space comlexity : O(M*N)
+    is worked on leetcode: locked problem but worked on sample test cases
+    
+*/
+    public int min_cost_dp(int[][]costs){
+        if (costs == null || costs.length == 0 )  return 0;
+        for (int i=1;i<costs.length; i++){
+            // top down DP
+            costs[i][0] += Math.min ( costs[i-1][1], costs[i-1][2]);
+            costs[i][1] += Math.min ( costs[i-1][0], costs[i-1][2]);
+            costs[i][2] += Math.min ( costs[i-1][0], costs[i-1][1]);
+        }
+        int n = costs.length-1;
+        return Math.min(costs[n][0], Math.min(costs[n][1],costs[n][2]));
+
     }
 
     public static void main(String[] args) {
         int[][] costs= { {17,2,17},{16,16,5},{14,3,19}};
         PaintHouse obj =  new PaintHouse();
         System.out.println(obj.minCost(costs));
+        System.out.println(obj.min_cost_dp(costs));
     }   
 }
