@@ -33,7 +33,7 @@ class Solution {
         }
          if(lastColor == 2){
             case3 = Math.min(
-            helper(costs,min+costs[row][1],row+1,1),helper(costs,min+costs[row][1],row+1,1)
+            helper(costs,min+costs[row][1],row+1,1),helper(costs,min+costs[row][0],row+1,0)
             );
         }
         return Math.min(case1, Math.min(case2,case3));
