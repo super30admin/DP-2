@@ -1,0 +1,63 @@
+class Solution {
+    public int change(int amount, int[] coins) {
+            // Time Complexity : O(2 ^ num of coins)
+// Space Complexity : O(num of coins)
+// Did this code successfully run on Leetcode : TLE
+// Any problem you faced while coding this : No
+        
+        return allWays(coins, amount, 0);
+    }
+    
+    private int allWays(int[] coins, int amount, int index){
+        //BASE COND
+        //Making amount 0 with any given coins will be 1 way i.e, not taking any coin
+        if(amount == 0) return 1;
+        //if amount <0 means it is not reachable with the given combination so 0 ways
+        if(amount<0 || index == coins.length) return 0;
+        
+        //MAIN LOGIC
+        //recursive calls for taking the coin and not taking coin at any index , then calc the sum of all possible valid paths from them.
+        int case1 = allWays(coins, amount, index+1);
+        int case2 = allWays(coins, amount-coins[index], index);
+        return case1+case2;
+    }
+}
+
+
+
+
+
+class Solution {
+                // Time Complexity : O(num of coins * amount )
+// Space Complexity : O(num of coins * amount)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+    
+    public int change(int amount, int[] coins) {
+        //if no coins present, there are 0 ways
+        if(coins == null) return 0;
+        
+        //extra space is for making 0 amount using 0 value coin
+        int[][] dp = new int[coins.length+1][amount+1];
+        //Initializing the first column of dp to 1 , as there is only 1 way t make 0 amount with any coins.
+        //REst will be default 0
+        for(int i = 0 ; i<=coins.length;i++){
+            dp[i][0] = 1;
+        }
+        //if amount is less than coin value, hthen no way to make the amount, so just take the value without this coin i.e, before row
+        //else, take thhe no. of ways to make this using previous store i.e, same coin and then add the no. of ways without using  this coin.
+        for(int i =1;i<=coins.length;i++){
+            for(int j=1;j<=amount;j++){
+                if(j < coins[i-1]){
+                    dp[i][j] = dp[i-1][j];
+                }
+                else{
+                    dp[i][j] = dp[i-1][j] + dp[i][j-coins[i-1]];
+                }
+            }
+        }
+        return dp[coins.length][amount];
+    }
+    
+
+}

@@ -1,0 +1,79 @@
+class Solution{
+    // Time Complexity : O(2 ^ num of houses)
+// Space Complexity : O(num of houses)
+// Did this code successfully run on Leetcode : TLE
+// Any problem you faced while coding this :
+
+    public int minCost(int[][] costs){
+        //Intializing minCost to 0, starting row of house to 0, maintaining last color used(0/1/2)
+        int case1 = minCostPath(costs,0,0,0);
+        int case2 = minCostPath(costs,0,0,1);
+        int case3 = minCostPath(costs,0,0,2);
+        return Math.min(case1, Math.min(case2,case3));
+    }
+
+    private int minCostPath(int[][] costs, int min, int row, int lastColor){
+
+        //BASE COND
+        //when the painting is done to all the houses i.e, all rows, last call will have length of houses value as row.
+        if(row == costs.length) return min;
+
+
+        //MAIN LOGIC
+        //When last call included 0th color, then next call can be on 1/2 color, and we maintain the min cost of both cases(1/2)
+        if(lastColor == 0){
+            case1 =  
+            Math.min( minCostPath(costs, min + costs[row][1], row+1, 1 ),
+                      minCostPath(Costs, min + costs[row][2], row+1, 2)
+            );
+        }
+        //When last call included 1st color, then next call can be on 0/1 color, and we maintain the min cost of both cases(0/2)
+         if(lastColor == 1){
+            case2 =  
+            Math.min( minCostPath(costs, min + costs[row][0], row+1, 0 ),
+                      minCostPath(Costs, min + costs[row][2], row+1, 2)
+            );
+        }
+        //When last call included 2nd color, then next call can be on 1/2 color, and we maintain the min cost of both cases(0/1)
+         if(lastColor == 2){
+            case2 =  
+            Math.min( minCostPath(costs, min + costs[row][0], row+1, 0 ),
+                      minCostPath(Costs, min + costs[row][1], row+1, 1)
+            );
+        }
+        //return min cost of all paths starting with particular color call.
+        return Math.min(case1, Math.min(case2,case3));
+
+    }
+
+
+    
+}
+
+
+
+
+
+
+// DP
+
+class Solution{
+        // Time Complexity : O(num of houses)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode :
+// Any problem you faced while coding this :
+
+    public int minCost(int[][] costs){
+        if(costs == null || costs.length == 0) return 0;
+        //here maintaining the min cost at house in all poosible conditions.
+        //Hence using the same array so that first row will remain same as the min cost at first house is cost required to paint that house only
+        //From next 2nd house onwards, we make use of reptiting subproblem, and add the current color cost with previous min costs(i.e, the possible path backwards)
+        for(int i =1;i<costs.length;i++){
+            costs[i][0]+ = Math.min(costs[i-1][1], costs[i-1][2]);
+            costs[i][1]+ = Math.min(costs[i-1][0], costs[i-1][2]);
+            costs[i][2]+ = Math.min(costs[i-1][0], costs[i-1][1]);
+        }
+        //returning the min value of last row, as it costs the mincost till that house for all possible paths.
+        return Math.min(dp[costs.length-1][0],dp[costs.length-1][1], dp[costs.length-1][2]);
+    }
+}
