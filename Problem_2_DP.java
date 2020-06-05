@@ -5,6 +5,12 @@
 
 class Solution {
     public int change(int amount, int[] coins) {
+        if(coins.length == 0){
+            return 1;
+        }
+        if(coins == null){
+            return 0;
+        }
         int[][] dp = new int[coins.length + 1][amount + 1];
         for(int i = 0;i<dp.length;i++){
             dp[i][0] = 1;
