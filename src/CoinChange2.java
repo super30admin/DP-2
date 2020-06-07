@@ -1,5 +1,5 @@
-// Time Complexity : O(m*n)
-// Space Complexity : O(m*n)
+// Time Complexity :brute force: O(2^(m*n)), dp: O(m*n), m=coins.length, n = amount
+// Space Complexity : brute force:O(m*n) ,dp: O(m*n)
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : 
 
