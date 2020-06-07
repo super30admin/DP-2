@@ -1,5 +1,5 @@
-// Time Complexity : 
-// Space Complexity :
+// Time Complexity : o(n) n = number of houses
+// Space Complexity : o(1)
 // Did this code successfully run on Leetcode : No
 // Any problem you faced while coding this : 
 
