@@ -1,6 +1,6 @@
 // Time Complexity : 3*O(2^n) --> where n is number of houses
 // Space Complexity : O(n + m) --> where m is number of color
-// Did this code successfully run on Leetcode : Yes
+// Did this code successfully run on Leetcode (256): Yes
 // Any problem you faced while coding this : Yes, did not understand it well.
 
 

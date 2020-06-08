@@ -1,6 +1,6 @@
 // Time Complexity : O(mn) --> where m is amount and n is length of array
 // Space Complexity : O(mn)
-// Did this code successfully run on Leetcode : Yes
+// Did this code successfully run on Leetcode (518): Yes
 // Any problem you faced while coding this : No
 
 // Explanation: In this 'Coin Change' problem, we are creating a 2D array of size numeber of coins and amount size. We are then traversing over this 2D array to compute the number of combinations that make up that amount and storing this information for future use cases. In this way we are eliminating the computation of similar sub-cases (like we had in using recurssion method). And in each index we are taking the addition of both the cases i.e. (1) to choose a coint or (2) to not choose the coin. Going with this method, we are able to solve the problem in linear time i.e. O(mn).

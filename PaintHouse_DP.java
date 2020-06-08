@@ -1,6 +1,6 @@
 // Time Complexity : O(n) --> where n is number of houses, as the color are fixed there will no O(m)
 // Space Complexity : O(1) --> as we are mutating the same array
-// Did this code successfully run on Leetcode : Yes
+// Did this code successfully run on Leetcode (256): Yes
 // Any problem you faced while coding this : Yes
 
 // Explanation: In this 'Paint House' problem, we are mutating over the same array. We are iterating over the array from the 2nd row and for each index we are computing the minimum value from the other 2 colors of the upper row and adding the original value. In this manner we are filling up the rest of the array. At the end, we take the minimum value from last row which gives us the final ans. As the colors are fixed, we are just iterating over the rows and so the time complexity will be linear i.e. O(n).
