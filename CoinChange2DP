@@ -1,0 +1,41 @@
+// Time Complexity: O(m*n) : m -> coins array's length, n -> amount
+// Space complexity O(m*n) : using a DP array of m*n length
+
+// Algorithm
+/**
+ * 1. Initialize a 2D DP array of row length as coins.length + 1 as we have an extra row for coin 0.
+ * 2. Column length is amount + 1 to accomodate column for amount 0.
+ * 3. Initialize first column as 1 because it takes 1 way for coin 0 to make amount 0 as well as [0, other amounts] to
+ * make coin 0.
+ * 4. Iterate over the DP array
+ * 5. Till the current coin row is less than the coin value, pick values from the row above.
+ * 6. The max number of ways to make change at current cell would be the sum of the ways to make change at previous column +
+ *  number of ways to make change when the value at current cell is shifted by the coin amount. (Shift target - current coin value to left).
+ * 7. Return last cell in the DP array which gives us the answer.
+ *
+ */
+
+
+class CoinChange2DP {
+    public int change(int amount, int[] coins) {
+
+        int[][] dp = new int[coins.length + 1][amount + 1];
+
+        for(int i = 0 ; i < dp.length ; i++){
+            dp[i][0] = 1;
+        }
+
+        for(int i = 1 ; i < dp.length ; i++){
+            for(int j = 1 ; j < dp[0].length ; j++){
+                if(j < coins[i-1]){ // as we have an extra row in the dp array
+                    dp[i][j] = dp[i-1][j];
+                }
+                else {
+                    dp[i][j] = dp[i-1][j] + dp[i][j - coins[i-1]];
+                }
+            }
+        }
+        return dp[coins.length][amount];
+
+    }
+}

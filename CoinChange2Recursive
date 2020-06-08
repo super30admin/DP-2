@@ -1,0 +1,23 @@
+class CoinChange2Recursive {
+    public int change(int amount, int[] coins) {
+        return helper(amount, coins, 0);
+    }
+
+    private int helper(int amount, int[] coins, int index){
+
+        // base case
+
+        if(amount == 0) return 1;
+
+        if(amount < 0 || index == coins.length) return 0;
+
+        // logic
+
+        int case1 = helper(amount - coins[index], coins, index);
+
+        int case2 = helper(amount, coins, index + 1);
+
+        return case1 + case2;
+
+    }
+}

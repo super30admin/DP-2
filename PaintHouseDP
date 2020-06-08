@@ -1,0 +1,29 @@
+// Time Complexity: O(n) n-> input length. It's not m*n as the number of houses are fixed i.e 3
+// Space Complexity: O(1)
+
+// Algorithm
+/**
+ * 1. We go bottom up.
+ * 2. The min value at the  cell 0 in the last row would be the minimum value till the second last row between values cell 1 and 2.
+ * 3. The min value at the  cell 1 in the last row would be the minimum value till the second last row between values cell 0 and 2.
+   4. The min value at the  cell 2 in the last row would be the minimum value till the second last row between values cell 0 and 1.
+   5. Return the minimum of the values from the last row.
+*/
+
+class Solution {
+    public int minCost(int[][] costs) {
+        if(costs == null || costs.length == 0) return 0;
+
+        int n = costs.length - 1;
+
+        for(int i = 1 ; i < costs.length ; i++){
+            costs[i][0] += Math.min(costs[i-1][1], costs[i-1][2]);
+            costs[i][1] += Math.min(costs[i-1][0], costs[i-1][2]);
+            costs[i][2] += Math.min(costs[i-1][1], costs[i-1][0]);
+        }
+
+        return Math.min(costs[n][0], Math.min(costs[n][1], costs[n][2]));
+
+
+    }
+}
