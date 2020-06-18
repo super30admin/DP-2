@@ -11,4 +11,4 @@ def min_cost(array):
 
 #Time complexity - O(n*m) as every row of input array is traversed
 #Space complexity - O(1), no auxillary data structures used
-#not tested on leetcode
+#not tested on leetcode//premium
