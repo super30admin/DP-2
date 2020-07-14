@@ -1,0 +1,25 @@
+// Time Complexity : O(m) m is number of rows
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this :No
+
+public int minCost(int[][] costs) {
+
+    /* edge case */
+    if(costs==null||costs.length==0)
+        return 0;
+ 
+    /* start from first row to till end of the matrix row */
+    for(int i=1; i<costs.length; i++){
+        /* for current column add value min from 2 other colmuns expect the current from above row  */
+        costs[i][0] += Math.min(costs[i-1][1], costs[i-1][2]);
+        costs[i][1] += Math.min(costs[i-1][0], costs[i-1][2]);
+        costs[i][2] += Math.min(costs[i-1][0], costs[i-1][1]);
+    }
+ 
+    /* get index of the last row */
+    int m = costs.length-1;
+ 
+    /* return min from columns of last row */
+    return Math.min(Math.min(costs[m][0], costs[m][1]), costs[m][2]);
+}

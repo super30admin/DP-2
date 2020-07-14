@@ -1,0 +1,26 @@
+// Time Complexity : O(no of coin * amount)
+// Space Complexity :O(no of coin * amount)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+class Solution {
+    public int change(int amount, int[] coins) {
+        
+        /* intialize the dp array */
+        int[][] dp = new int[coins.length+1][amount+1];
+        
+        /* [0][0] is assigned 1 */
+        dp[0][0] = 1;
+        
+        /* no of rows is given coins */
+        for (int i = 1; i <= coins.length; i++) {
+            dp[i][0] = 1;
+            /* no of columns is given amount */
+            for (int j = 1; j <= amount; j++) {
+                /* value of cell is the above cell + (if amount is less than coin denomination then add zero else add dp[i][currentamount - coin value]) */
+                dp[i][j] = dp[i-1][j] + (j >= coins[i-1] ? dp[i][j-coins[i-1]] : 0);
+            }
+        }
+        return dp[coins.length][amount]; //return no of possible ways
+    }
+}
