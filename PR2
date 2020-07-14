@@ -1,0 +1,50 @@
+// Time Complexity : O(m*n)- where m is the amount and n is the number of coins.
+// Space Complexity :O(m*n)- where m is the amount and n is the number of coins. - the table space
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : Yes, Initially I had trouble understanding the dp approach.
+// Your code here along with comments explaining your approach: The approach is simple. We create a dummy row and column and at each step until the amount is smaller than the coin denomination, we copy from above, if not then we can get the value from above and add it the value we get from the same row, column-coins[j] which is another way of getting the min.(so by choosing and not choosing we determine the number of ways).
+
+class Solution {
+    public int change(int amount, int[] coins) {
+      if(amount==0) return 1;
+      if(coins==null || coins.length==0) return 0;
+      int[][] dp=new int [coins.length+1][amount+1];
+      for(int i=0;i<coins.length+1;i++){
+          dp[i][0]=1;
+      }
+      for(int i=1;i<dp.length;i++){
+          for(int j=1;j<dp[0].length;j++){
+              if(j<coins[i-1]){
+                  dp[i][j]=dp[i-1][j];
+              }
+              else{
+                  dp[i][j]=dp[i-1][j]+dp[i][j-coins[i-1]];
+              }
+          }
+      }
+        return dp[coins.length][amount];
+    }
+}
+// Time Complexity : O(m*(2^n)) where m is the
+// Space Complexity : O(m+n)
+// Did this code successfully run on Leetcode : No, it receives a Time limit exceeded for large values of n
+// Any problem you faced while coding this : No
+// Your code here along with comments explaining your approach: The approach is to find all the paths to find the amount and add it up.
+
+class Solution {
+    public int change(int amount, int[] coins) {
+        return helper(coins,amount,0);
+    }
+    
+    public int helper(int[] coins,int amount,int index){
+        //base
+        if(amount==0) return 1;
+        if(amount<0 || index>=coins.length) return 0;
+        //logic
+        //choose
+        int case1= helper(coins,amount-coins[index],index);
+        //don't choose
+        int case2= helper(coins,amount,index+1);
+        return case1+case2;
+    }
+}
