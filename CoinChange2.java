@@ -17,6 +17,7 @@
       .
       .
       soo on
+      if amount can not be acheived by given coins, then result should be 0.
     */
 
     class Solution {
