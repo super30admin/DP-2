@@ -1,14 +1,15 @@
-# APPROACH  
-# Time Complexity : 
-# Space Complexity : 
-# Did this code successfully run on Leetcode : 
-# Any problem you faced while coding this : 
+# APPROACH 1: BRUTE FORCE (RECURSIVE SOLUTION) 
+# Time Complexity : O(2 ^ (t / min(n))), n : len(nums), t: target
+# Space Complexity : O(t / min(n))
+# Did this code successfully run on Leetcode : NO (TIME LIMIT EXCEEDED)
+# Any problem you faced while coding this : NONE
 #
 #
 # Your code here along with comments explaining your approach
-# 1.
-# 2. 
-# 3.
+# 1. Its a recursive solution with arguments - coins, remaining amount, index, count of ways
+# 2. base case: if remaining amount is 0, inc count of ways by 1 and return it
+# 3. 2 cases- dont choose the coin -> call recursively with args - coins, remaining amount, index + 1, count of ways
+#              choose the coin -> call recursively with args - coins, remaining amount - current coin value, index (as we can cjoose the same coin), count of ways
 
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
