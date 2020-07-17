@@ -49,7 +49,7 @@ class Solution {
 }
 
 
-//above approach much cleaner, with the use of for each
+//cleaning above approach
 
 class Solution {
     public int change(int amount, int[] coins) {
