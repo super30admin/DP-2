@@ -25,3 +25,25 @@ class Solution {
         return dp[coins.length][amount];
     }
 }
+
+//Alternate DP approach without 2-D matrix, with just an array
+
+class Solution {
+    public int change(int amount, int[] coins) {
+        int[] dp = new int[amount+1];
+        
+        dp[0] = 1;
+        for(int j = 1; j < amount+1; j++){
+            dp[j] = 0;
+        }
+        
+       for(int i = 1; i < coins.length+1; i++){
+           for(int j = 1; j < amount+1; j++){
+               if(coins[i-1] <= j){
+                   dp[j] += dp[j-coins[i-1]];
+               }
+           }
+       }
+        return dp[amount];
+    }
+}
