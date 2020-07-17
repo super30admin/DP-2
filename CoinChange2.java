@@ -49,6 +49,26 @@ class Solution {
 }
 
 
+//another one, change is just that initializing inner for loop with the first values of coin array
+class Solution {
+    public int change(int amount, int[] coins) {
+        int[] dp = new int[amount+1];
+        
+        dp[0] = 1;
+        for(int j = 1; j < amount+1; j++){
+            dp[j] = 0;
+        }
+        
+       for(int i = 1; i < coins.length+1; i++){
+           for(int j = coins[i-1]; j < amount+1; j++){
+                   dp[j] += dp[j-coins[i-1]];
+           }
+       }
+        return dp[amount];
+    }
+}
+
+
 //cleaning above approach
 
 class Solution {
