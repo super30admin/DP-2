@@ -42,6 +42,12 @@ class Solution {
 }
 
 
+
+// Time Complexity : O(n), n = number of houses
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
+
 // DP
 
 class Solution {
