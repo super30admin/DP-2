@@ -88,7 +88,7 @@ class Solution:
 #
 #
 # Your code here along with comments explaining your approach (SAME APPROACH AS APPROACH 2)
-# 1. Store all the solutions in id array, of size amount. The array is initialised as (1st element as 1) and rest as 0.
+# 1. Store all the solutions in 1d array, of size amount. The array is initialised as (1st element as 1) and rest as 0.
 # 2. Do this for len(coins) times, for each cell - if target (column) < denomination (row) -> do nothing
 #                                                   if target >= denomination -> cell's value + number of ways to get target - denomination
 # 3. Result is the last cell value of the array
