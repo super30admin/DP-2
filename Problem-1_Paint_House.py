@@ -20,8 +20,6 @@ class Solution:
     
     def helper(self, costs, current_cost, ind, prev_color):
         
-        case_1, case_2, case_3 = float('inf'), float('inf'), float('inf')
-        
         if ind == len(costs):
             return current_cost
         
