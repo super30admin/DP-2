@@ -33,12 +33,7 @@ class Solution:
     
         # CHOOSE THE COIN
         case_2 =  self.helper(coins, remaining_amount - coins[ind], ind, count_ways)
-        
-        if case_1 == -1:
-            return case_2
-        elif case_2 == -1:
-            return case_1
-        
+
         return case_1 + case_2
 
 
