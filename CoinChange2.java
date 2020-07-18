@@ -1,5 +1,9 @@
-//DP
+// Time Complexity : O(kn), n = number of coins, k is the amount 
+// Space Complexity : O(nk)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
 
+//DP
 class Solution {
     public int change(int amount, int[] coins) {
         int[][] dp = new int[coins.length + 1][amount+1];
