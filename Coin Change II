@@ -1,0 +1,23 @@
+Approach 1 : Brute Force by considering problem as tree and divide each time into considering the coin and not considering.
+Count all the paths that reach the sum is zero. 
+Time complexity :O(2^(T/min(coins))
+Space complexity : Recursive call depth. So Max no of calls in the recursive would be biggest branch.O(T/min(coins))
+
+Approach 2 : DP
+Time complexity : O(n*T) T is target
+Space Complexity : O(n*T)
+
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        n=len(coins)
+        dp=[[0 for i in range(n+1)] for j in range(amount+1)]
+        dp[0][0]=1
+        result=0
+        for i in range(1, n):
+            for j in range (1,amount):
+                if j< coins[i]: #### 
+                    dp[i][j]=dp[i-1][j]
+                else:
+                    dp[i][j]=dp[i-1][j]+dp[i][j-coins[i]]
+            result+=dp[n][amount]
+        return result
