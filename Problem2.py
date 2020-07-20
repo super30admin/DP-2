@@ -14,3 +14,16 @@ class Solution:
             for j in range(c,amount+1):
                 dp[j] += dp[j-c]
         return dp[amount]
+    #Second function to get the combinations of coins to get the given amount
+    def change2(self, amount: int, coins: List[int]) -> int:
+        return self.combination(amount, 0, coins, 1)
+    #helper recursive function for base solution
+    # Time = O(2^(n/min(coins)))
+    # Space = O(n) for recursive stack
+    def combination(self, amount, ind, coins, counts):
+        if amount<0 or ind>=len(coins):
+            return 0
+        if amount==0:
+            return 1
+        count = self.combination(amount, ind+1, coins, counts) + self.combination(amount - coins[ind], ind, coins, counts)
+        return count
