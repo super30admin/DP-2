@@ -1,9 +1,8 @@
-#Tume complexity: O(n*T): where n: # of coins, T: target
-#Space complexity: O(n*T): where n: # of coins, T: target
-#This algorithm uses dynamic programming, by first calculating the optimal value when
-# a coin is not chosen, versus when a coin is chosen, for each coin iteratively.
-# It then takes the maximum value of when all coins are present, and we decide whether
-# or not to choose it.
+#Tume complexity: O(n): where n: # of houses
+#Space complexity: O(n)
+#This algorithm uses dynamic programming, by converting it into several subproblems, where each subproblem solves for
+# finding the optimal cost of house painting, when certain houses are present, and the process keeps on expanding for more
+# and more houses, until we cover all houses.
 
 def solution(costs):
     num_houses = len(costs)

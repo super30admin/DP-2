@@ -1,10 +1,8 @@
-#Tume complexity: O(n*T): where n: # of coins, T: target
-#Space complexity: O(n*T): where n: # of coins, T: target
-#Worked on leetcode
-#This algorithm uses dynamic programming, by first calculating the optimal value when
-# a coin is not chosen, versus when a coin is chosen, for each coin iteratively.
-# It then takes the maximum value of when all coins are present, and we decide whether
-# or not to choose it.
+#Tume complexity: O(n*T): where n: # of coins, T: target amount value
+#Space complexity: O(n*T)
+#This algorithm uses dynamic programming, by converting it into several subproblems, where each subproblem solves for
+# finding the number of ways to reach a target values, by first picking certain number of coins.
+# We keep on adding more number of coins, till we cover all coins, and target value is reached.
 
 def solution(amount, coins):
     dp = [[0 for _ in range(amount+1)] for _ in range(len(coins)+1)]
