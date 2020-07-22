@@ -18,7 +18,6 @@ class Solution:
         for j in range(1, amount + 1):
             dpMatrix[0][j] = 0
 
-
         for i in range(1, len(coins) + 1):
             for j in range(1, amount + 1):
 
@@ -27,11 +26,10 @@ class Solution:
                 if coins[i - 1] > j:
                     dpMatrix[i][j] = dpMatrix[i - 1][j]
 
-                # else we add the previous coin number of  ways to reach the target value and current coin way to reach  (target - current coin) value
-                # plus adding 1 value of current coin.
+                # else we add the previous coin number of  ways to reach the target value and current coin way to
+                # reach  (target - current coin) value plus adding 1 value of current coin.
                 else:
 
                     dpMatrix[i][j] = dpMatrix[i - 1][j] + dpMatrix[i][j - coins[i - 1]]
-
 
         return dpMatrix[-1][-1]
