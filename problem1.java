@@ -1,3 +1,5 @@
+//Time complexity:O(N)
+//space :O(1)
 class Solution {
     public int minCost(int[][] cost) {
         if (cost.length == 0)
