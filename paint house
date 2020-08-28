@@ -1,0 +1,16 @@
+class Solution(object):
+    def minCost(self, costs):
+        """
+        :type costs: List[List[int]]
+        :rtype: int
+        """
+        print(len(costs))
+        if len(costs) == 0:
+            return 0 
+        
+        for x in range(1, len(costs)):
+            costs[x][0] += min(costs[x - 1][1], costs[x - 1][2])
+            costs[x][1] += min(costs[x - 1][0], costs[x - 1][2])
+            costs[x][2] += min(costs[x - 1][0], costs[x - 1][1])
+        
+        return min(costs[len(costs)-1][0], costs[len(costs)-1][1], costs[len(costs)-1][2])
