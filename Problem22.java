@@ -23,8 +23,6 @@ public class Problem22 {
 
                 if(j<coins[i-1])
                     numWays[i][j] = numWays[i-1][j];
-                else if(j==coins[i-1])
-                    numWays[i][j] = 1+numWays[i-1][j];
                 else
                     numWays[i][j] = numWays[i-1][j]+numWays[i][j-coins[i-1]];
             }
