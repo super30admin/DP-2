@@ -1,3 +1,7 @@
+// Time Complexity : O(N*m) N:number of coins, m:amount
+// Space Complexity : O(N*m)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
 class CoinChange2{
     public static void main(String[] args){
         CoinChange2 ph = new CoinChange2();
