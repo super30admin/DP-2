@@ -1,6 +1,6 @@
 //M : Coins size
 //N : Amount
-//T : O(M)
+//T : O(M*N)
 //S: O(M*N)
 class Solution {
 public:
