@@ -15,7 +15,7 @@ class Solution {
         int[] dp = new int[amount+1];
         //if first element is equal to amount
         dp[0]=1;
-        
+        //take current value + previous sum
         for( int i:coins){
             for(int j=i; j<=amount; j++){
                 dp[j]+= dp[j-i];
