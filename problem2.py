@@ -1,36 +1,38 @@
-# Time Complexity: O(N * A) N is the amount and A is the number of coins
-# Space Complexity: O(N) 
-# Did not pass Leetcode 
+# Time Complexity: O(M) M is the max amount in the array
+# Space Complexity: O(1) 
+# Passed Leetcode 
 
 class Solution:
-    
-    def recurse(self, amount, coins):
-        print(amount, self.m)
-        if amount == 0:
-            self.count += 1
-            return 1
-        if amount < 0:
+    def deleteAndEarn(self, nums: List[int]) -> int:
+        
+        if len(nums) == 0:
             return 0
         
-        total_ways = 0
-        for coin in coins:
+        m = {}
+        max_value = -float("inf")
+        for i in range(len(nums)):
+            if nums[i] > max_value:
+                max_value = nums[i]
             
-            curr_amount = amount - coin
-            if curr_amount in self.m:
-                if self.m[curr_amount] > 0:
-                    total_ways += self.m[curr_amount] + 1
-                                    
-            else:
-                total_ways += self.recurse(curr_amount, coins)
-        
-        self.m[amount] = total_ways
-        return total_ways
+            if nums[i] not in m:
+                m[nums[i]] = 0
+            m[nums[i]] += 1
+        #Leave, Pick
+        dp = (0,0)
+
+        for i in range(1, max_value + 1):
             
+            count = 0
+            if i in m:
+                count = m[i]
+            
+            leave = max(dp)
+            pick = dp[0] + i * count
+            
+            dp = (leave, pick)
+        return max(dp)
     
-    def change(self, amount: int, coins: List[int]) -> int:
-        
-        self.m = {}
-        self.count = 0
-        self.recurse(amount, coins)
-        
-        return self.count
+    
+
+    
+    
