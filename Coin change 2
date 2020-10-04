@@ -1,0 +1,27 @@
+// TC: O(n*k) -> n is amount and k is the maount
+// SP : O(n*k)
+// we use 2d dp array
+class Solution {
+    public int change(int amount, int[] coins) {
+        int[][] memo = new int[coins.length+1][amount+1];
+        
+        //Initialize DP
+        for(int i=0; i <= coins.length; i++)
+            memo[i][0] = 1; // ways to form zero amount
+        for(int i=1; i <= amount; i++)
+            memo[0][i] = 0; //to form amount from zero coin
+        
+        for(int i = 0; i < coins.length; i++){
+            for(int j = 1; j <= amount; j++){
+                if(j >= coins[i])
+            // here total number of ways: ways when we don't take the ith coin + ways whhen we take tahe coin
+                memo[i+1][j] = memo[i][j] + memo[i+1][j-coins[i]]; // here we consider thw ith coin
+                    else
+            //if amount is less than coin, then we can't take that ith coin            
+                memo[i+1][j] = memo[i][j];
+            }
+        }
+        
+        return memo[coins.length][amount];
+    }
+}

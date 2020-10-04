@@ -1,0 +1,36 @@
+// which path of painting gives me the minimum cost
+// n houses and 3 colors => n * 3 matrix
+/* approach: since ther are only 3 cols, RGB; we use three variables*/ 
+// TC: O(n*3) -> O(n)
+//SP : O(1)
+class Solution {
+    public int minCost(int[][] cost) {
+        
+        //base case
+        if(cost == null || cost.length == 0) return 0;
+        
+        // Initailise dp
+        int n_houses = cost.length;
+        int lastred = cost[0][0];
+        int lastblue = cost[0][1];
+        int lastgreen = cost[0][2];
+        
+        for(int i = 1 ; i<n_houses; i++){
+           
+            // if we chose to paint with red -> we go for minimum of lastblue and lastgreen  of last iteration
+            int curr_red = cost[i][0] + Math.min(lastblue, lastgreen); 
+            // we chose to paint with blue -> add current value of blue to min of previous red and green
+            int curr_blue = cost[i][1] + Math.min(lastred, lastgreen);
+            // we chose to paint with grren -> add current green to min of previous red and blue
+            int curr_green = cost[i][2] + Math.min(lastred, lastblue);
+           
+            // we change our cuurent RBG to Last RGB for next iteration
+            lastred = curr_red;
+            lastblue = curr_blue;
+            lastgreen = curr_green;
+        }
+        // return min value out of last row.
+        return Math.min(Math.min(lastred, lastblue), lastgreen);
+        
+    }
+}
