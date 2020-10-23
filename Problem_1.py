@@ -1,6 +1,6 @@
 """
 This is the recursive code as of now which I wrote, will be modifying it to DP and submitting again
-once I understand how DP can be handled here. Thanks
+once I understand how DP can be handled here. Right now, it gives time limit exceeded. Thanks
 """
 
 
