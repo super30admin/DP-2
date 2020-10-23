@@ -1,0 +1,24 @@
+# Time Complexity : O(m*2^n), m is the number of colors that can be chosen, and n is the number of houses
+# Space Complexity : O(2^n)
+# Did this code successfully run on LeetCode : Yes
+# Any problem you faced while coding this : No
+
+class Solution:
+    def minCost(self, costs: List[List[int]]) -> int:
+        if len(costs) == 0: 
+            return 0
+        case1 = self.helper(costs, 0, 0, costs[0][0])
+        case2 = self.helper(costs, 0, 1, costs[0][1])
+        case3 = self.helper(costs, 0, 2, costs[0][2])
+        return min(case1, case2, case3)
+    
+    def helper(self, costs, row, color, minVal):
+        if row == len(costs)-1:
+            return minVal
+        curMinVal = float("inf")
+        for i in range(3):
+            if i != color:
+                one_case = self.helper(costs, row+1, i, minVal + costs[row+1][i])
+                two_case = self.helper(costs, row+1, i, minVal + costs[row+1][i])
+                curMinVal = min(curMinVal, one_case, two_case)
+        return curMinVal
