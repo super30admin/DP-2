@@ -1,5 +1,5 @@
-// Time Complexity : O(n+m) where n is the amount and n is the length of the coins array (traversing 2-d array of m*n)
-// Space Complexity : O(n+m) where n is the amount and n is the length of the coins array (2-d array of m*n)
+// Time Complexity : O(n*m) where n is the amount and n is the length of the coins array (traversing 2-d array of m*n)
+// Space Complexity : O(n*m) where n is the amount and n is the length of the coins array (2-d array of m*n)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this :
 
