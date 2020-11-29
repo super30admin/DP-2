@@ -1,0 +1,38 @@
+// Time Complexity : O(MN)
+// Space Complexity : O(MN) ??
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : NO - Haven't tried recursive approach.
+
+
+// Your code here along with comments explaining your approach :  Idea is to create a 2d matrix. If amount is less than coin value put previous result else add the result from previous computation from amount - coin value.
+SOLUTION:
+
+class Solution {
+    public int change(int amount, int[] coins) {
+        if(coins==null){
+            return 0;
+        }
+        //Added length + 1 as we are starting from 0
+        int[][] dp = new int[coins.length + 1][amount + 1];
+        int m = dp.length;
+        int n = dp[0].length;
+        
+        //fill up 1st column of every row with 1
+        for(int i = 0 ; i < m ; i++){
+            dp[i][0] = 1;
+        }
+        
+        for(int i = 1 ; i < m ; i++){
+            for(int j = 1; j < n ; j++){
+                //if amount is lesser than coin value
+                if(j < coins[i-1]){
+                    dp[i][j] = dp[i-1][j];
+                }else{
+                    dp[i][j] = dp[i-1][j] + dp[i][j - coins[i-1]]; //if amount is more than coin value --> add value from the above row  + previous result of {amount - coin value}
+                }
+            }
+        }
+        
+        return dp[m-1][n-1];
+    }
+}
