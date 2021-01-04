@@ -24,6 +24,7 @@
 // }
 
 // Bottom up DP - O(M*N) - O(coins.length + 1 * amount +1 )
+// SC = O(M*N)
 class Solution {
     public int change(int amount, int[] coins) {
         int[][] dp = new int[coins.length+1][amount+1];

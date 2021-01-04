@@ -1,4 +1,7 @@
 // If input array is ALLOWED TO BE MODIFIED
+// TC: O(M*N) - M , N - rows and cols of costs matrix
+// SC: O(1) 
+// Did it run successfully on Leetcode? : Yes
 // class Solution {
 //     public int minCost(int[][] costs) {
 //         if ( costs == null || costs.length == 0) 
@@ -15,6 +18,9 @@
 // }
 
 // If input array is NOT ALLOWED TO BE MODIFIED
+// TC: O(M*N) - M , N - rows and cols of costs matrix
+// SC: O(1) 
+// Did it run successfully on Leetcode? : Yes
 class Solution {
     public int minCost(int[][] costs) {
         if ( costs == null || costs.length == 0) 
@@ -40,6 +46,9 @@ class Solution {
 }
 
 // Recursion 
+// TC: O(2 ^ M*N) ->  M,N - rows and cols of costs matrix
+// SC: O(1) 
+// Did it run successfully on Leetcode? : Yes
 // class Solution {
 //     public int minCost(int[][] costs) {
 //         int case1 = helper(costs, 0, 0, 0);
