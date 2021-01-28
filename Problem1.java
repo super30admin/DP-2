@@ -5,53 +5,32 @@
     {
         public int mincost(int [][] matrix)
         {
-            int sum=0;
-            int prev_index=-1;
-            for(int i=0;i<matrix.length;i++)
+            int n= matrix.length-1;
+            
+            for(int i=1;i<matrix.length;i++)
             {
-                int[] index=min(matrix[i]);
-                if(index[0]== prev_index){
-                    sum+=matrix[i][index[1]];
-                    prev_index=index[1];
-                }
-                else{
-                    sum+=matrix[i][index[0]];
-                    prev_index=index[0];
-                }
-                System.out.println("previos index is:"+prev_index);
+                for(int j=0;j<matrix[0].length;j++)
+                 {
+                     matrix[i][j]+= arraymin(matrix[i-1],j);
+                 }
             }
-            return sum;
+            return arraymin(matrix[n], -1);
         }
-    public int[] min(int[] arr)
-    {
-        int min=arr[0];
-        int index1=0;
-        int index2=0;
-        int min2=arr[0];
-        for(int i=0;i<arr.length;i++)
-        {
-            if(min>arr[i])
-            {
-                min2=min;
-                min=arr[i];
-                index1=i;
-                break;
-            }
-                if(min2>arr[i]){
-                    min2=arr[i];
-                    index2=i;
+
+        public int arraymin(int [] arr, int j)
+        {   int min=Integer.MAX_VALUE;
+            for(int i=0;i<arr.length;i++)
+                {
+                    if(i!=j && min>arr[i])
+                        min=arr[i];
                 }
-               
-        }
-        
-        int[] ans= new int[]{index1,index2};
-        return ans;
-    }
+            return min;
+        }   
     public static void main(String args[])
-    {
-            int[][] matrix= new int[][]{{17,2,17},{16,5,16},{14,3,19}};
+             {
+            int[][] matrix= new int[][]{{17,2,17,4},{16,3,1,17},{90,90,1,2}};
             Housepaint obj= new Housepaint();
             System.out.println("cost is :"+ obj.mincost(matrix));
             
-    }
+             }
     }
