@@ -1,6 +1,5 @@
-    //The approach to this question is finding the minimum in each row.
-    //if the minimum does collide with same column of previous minimum we add second minimum else we add the same minimum.
-    //This will not run for many cases but I could not come up with any other solution.
+    //Approach of this question is to start adding the subsequent min values of above roe to the current row. In the end find the min of last row.
+    //Time- O(n*m)- space complexity-O(1)
     class Housepaint
     {
         public int mincost(int [][] matrix)
