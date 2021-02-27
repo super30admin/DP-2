@@ -25,3 +25,26 @@ class Solution {
         return min;
     }
 }
+
+/* More generalized solution with n rows as houses and m columns as colors
+class Solution {
+    public int minCost(int[][] costs) {
+        if(costs.length==0) return 0;
+        int n=costs.length;
+        int m = costs[0].length;
+        for(int i=1;i<n;i++){
+            for(int j=0;j<m;j++){
+                int temp = Integer.MAX_VALUE; 
+                for(int k=0;k<m;k++){
+                    if(!(k == j)) temp= Math.min(temp,costs[i-1][k]);  
+                }
+                costs[i][j] += temp;
+            }
+        }
+        int min=Integer.MAX_VALUE;
+        for(int k:costs[n-1])
+            min = Math.min(min,k);
+        return min;
+    }
+}
+*/
