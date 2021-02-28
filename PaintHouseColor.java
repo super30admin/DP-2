@@ -1,3 +1,12 @@
+// Time Complexity :O(costs.length)
+// Space Complexity :O(1) for 3rd solution
+// Did this code successfully run on Leetcode :Yes
+// Any problem you faced while coding this :No
+
+
+// Your code here along with comments explaining your approach
+
+
 
 public class PaintHouseColor {
 	public static void main(String[] args){
@@ -64,4 +73,57 @@ public class PaintHouseColor {
 		return Math.min(Math.min(chosingRed, chosingGreen), chosingBlue);
 	}
 
+}
+
+
+
+//Using DP Array
+class PaintHouseColor {
+    public int minCost(int[][] costs) {
+        if(costs == null || costs.length == 0) return 0;
+        
+        int[][]dp = new int[costs.length][costs[0].length];
+        
+        for(int i = 0; i < dp.length; i++){
+            for(int j = 0; j < dp[0].length; j++){
+                if(i == 0){
+                    dp[i][j] = costs[0][j];
+                }else if(j == 0){
+                    dp[i][j] = costs[i][j] + Math.min(dp[i-1][j+1], dp[i-1][j+2]);
+                }else if(j == 1){
+                    dp[i][j] = costs[i][j] + Math.min(dp[i-1][j-1], dp[i-1][j+1]);
+                }else if(j == 2){
+                    dp[i][j] = costs[i][j] + Math.min(dp[i-1][j-2], dp[i-1][j-1]);
+                }
+            }
+        }
+        
+        return Math.min(dp[dp.length-1][0], Math.min(dp[dp.length-1][1],dp[dp.length-1][2]));
+        
+    }
+}
+
+//Using temp variables with constant space complexity
+class PaintHouseColor {
+    public int minCost(int[][] costs) {
+        if(costs == null || costs.length == 0) return 0;
+        
+        int chooseR = costs[0][0];int chooseB = costs[0][1]; int chooseG = costs[0][2];
+        int tempR = 0, tempB = 0, tempG = 0;
+        for(int i = 1; i < costs.length; i++){
+            for(int j = 0; j < costs[0].length; j++){
+                if(j == 0){
+                    tempR = costs[i][j] + Math.min(chooseB, chooseG);
+                }else if(j == 1){
+                    tempB = costs[i][j] + Math.min(chooseR, chooseG);
+                }else if(j == 2){
+                    tempG = costs[i][j] + Math.min(chooseR, chooseB);
+                }
+            }
+            chooseR = tempR;chooseG = tempG; chooseB = tempB;
+        }
+        
+        return Math.min(chooseR, Math.min(chooseB,chooseG));
+        
+    }
 }
