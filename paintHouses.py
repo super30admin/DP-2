@@ -22,27 +22,27 @@ Solution:
 
 we could see repeated sub problems. Brute force would be exponential.
 
-def paintHouses(nums):
-    if(nums==None or len(nums)==0):
+def paintHouses(costs):
+    if(costs==None or len(costs)==0):
         return 0
-    case1 = helper(nums, 0, 0, 0) -> row=0, col=0, sum=0
-    case2 = helper(nums, 0, 1, 0) -> row=0, col=1, sum=0
-    case3 = helper(nums, 0, 2, 0) -> row=0, col=2, sum=0
+    case1 = helper(costs, 0, 0, 0) -> row=0, col=0, sum=0
+    case2 = helper(costs, 0, 1, 0) -> row=0, col=1, sum=0
+    case3 = helper(costs, 0, 2, 0) -> row=0, col=2, sum=0
 
     return min(case1, min(case2, case3))
 
-def helper(nums, row, col, sum):
+def helper(costs, row, col, sum):
     #base
-    if(row == len(nums)-1):
+    if(row == len(costs)-1):
         return sum
 
     #logic
     if(col ==0):
-        return min(helper(nums, row+1, 1, sum+nums[0][0]), helper(nums, row+1, 2, sum+nums[0][0]))
+        return min(helper(costs, row+1, 1, sum+costs[0][0]), helper(costs, row+1, 2, sum+costs[0][0]))
     if(col ==1):
-        return min(helper(nums, row+1, 0, sum+nums[0][1]), helper(nums, row+1, 2, sum+nums[0][1]))
+        return min(helper(costs, row+1, 0, sum+costs[0][1]), helper(costs, row+1, 2, sum+costs[0][1]))
     if(col ==2):
-        return min(helper(nums, row+1, 0, sum+nums[0][2]), helper(nums, row+1, 1, sum+nums[0][2]))
+        return min(helper(costs, row+1, 0, sum+costs[0][2]), helper(costs, row+1, 1, sum+costs[0][2]))
 
 """
 """
@@ -58,16 +58,16 @@ Build the 2d array from bottom
  can be done in place -  no extra memory - Space complexity O(1)
 
 """
-def paintHouses(nums):
-    if(nums==None or len(nums)==0):
+def paintHouses(costs):
+    if(costs==None or len(costs)==0):
         return 0
     
-    for i in range(len(nums), -1, -1):
-        nums[i][0] = nums[i][0] + min(nums[i+1][1], nums[i+1][2])
-        nums[i][1] = nums[i][1] + min(nums[i+1][0], nums[i+1][2])
-        nums[i][2] = nums[i][2] + min(nums[i+1][0], nums[i+1][1])
+    for i in range(len(costs)-2, -1, -1):
+        costs[i][0] = costs[i][0] + min(costs[i+1][1], costs[i+1][2])
+        costs[i][1] = costs[i][1] + min(costs[i+1][0], costs[i+1][2])
+        costs[i][2] = costs[i][2] + min(costs[i+1][0], costs[i+1][1])
     
-    return min(nums[0][0], min(nums[0][1], nums[0][2]))
+    return min(costs[0][0], min(costs[0][1], costs[0][2]))
 
 arr = [[1,2,3],
      [4,5,6],
