@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//TC. O(n^2)
+//SC O(1)
 int minCost(vector<vector<int>> &costs) {
 
     if(costs.size() == 0)
