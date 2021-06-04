@@ -1,4 +1,7 @@
 class Solution {
+    // n indicates the length of coins, m indicates the amount.
+    // Time Complexity: O(m * n)
+    // Space Complexity: O(m)
     public int change(int amount, int[] coins) {
         if(coins == null)
             return 0;
