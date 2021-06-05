@@ -66,5 +66,5 @@ class Solution:
         return amount_combo_map[amount]
 
 obj = Solution()
-print(f"Possible combinations: {obj.change(5, [1,2,5])}")
+print(f"Possible combinations: {obj.change(11, [1,2,5])}")
 
