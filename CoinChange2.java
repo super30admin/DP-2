@@ -5,6 +5,9 @@
 
 
 // Your code here along with comments explaining your approach
+// The basic idea is we can either choose a coin or not choose a coin to achieve the amount 
+// We use DP to simulate both the cases and update the DP array accordingly
+// We finally return the number of ways we can get the amount using the given array of coins
 class Solution {
     public int change(int amount, int[] coins) {
         if(amount == 0)
