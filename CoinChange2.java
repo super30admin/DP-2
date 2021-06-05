@@ -23,9 +23,9 @@ class Solution {
         }
         if (amount < 0 || index == coins.length) return 0 ; 
         // logic
-        //not choosing the coin
-        int case1 = helper(coins, amount-coins[index], index);
         //choosing the coin
+        int case1 = helper(coins, amount-coins[index], index);
+        //not choosing the coin
         int case2 = helper(coins, amount, index+1);
             
             
