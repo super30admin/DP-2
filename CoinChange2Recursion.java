@@ -1,4 +1,4 @@
-// TC: O(2^9)
+// TC: O(2^n)
 class Solution {
     public int helper(int[] coins, int amount, int ind) {
         //valid path
