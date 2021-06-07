@@ -41,7 +41,7 @@ class Solution:
         return min(costs[0][0], costs[0][1], costs[0][2])
 
 
-# Space Optimized Solution
+# Optimized Solution - without mutating array
 # class Solution:
 #     def minCost(self, costs: List[List[int]]) -> int:
 #         if costs == None or len(costs) == 0:
@@ -64,3 +64,7 @@ class Solution:
 obj = Solution()
 print(obj.minCost([[17,2,17],[16,16,5],[14,3,19]]))
 print(obj.minCost([[7,6,2]]))
+
+
+# Time Complexity : O(n)
+# Space Complexity : O(1)
