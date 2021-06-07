@@ -1,3 +1,7 @@
+//basically sirs approach to the problem
+//I messed up the array, we can do without it as well
+
+//O(n^2) O(1)
 class Solution {
     public int minCost(int[][] costs) {
         if(costs == null || costs.length == 0)
