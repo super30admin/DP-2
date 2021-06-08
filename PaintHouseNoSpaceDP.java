@@ -1,7 +1,5 @@
 class Solution {
     public int minCost(int[][] costs) {
-        //using dp ( compute the cost in the same arr)
-        //using dp (using 3 variable)
         //null check
         if(costs == null || costs.length == 0) {
             return 0;
