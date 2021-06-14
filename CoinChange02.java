@@ -1,3 +1,5 @@
+//T.C. : O(n)
+//S.C. : O(1)
 class CoinChange02 {
     public int change(int amount, int[] coins) {
         if(coins== null && coins.length==0) return 0;
