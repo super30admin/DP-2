@@ -13,3 +13,5 @@ class Solution:
         return min(arr[len(arr)-1][0],arr[len(arr)-1][1],arr[len(arr)-1][2])
 #Time: O(n)
 #Space O(nm)
+#https://leetcode.com/problems/paint-house/
+#Ran successfully
