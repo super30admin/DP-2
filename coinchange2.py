@@ -1,4 +1,6 @@
 #https://leetcode.com/problems/coin-change-2/
+#time-o(n)
+#space-o(m*n) where is m is amount and n is len(coins)
 class Solution(object):
     def change(self, amount, coins):
         """

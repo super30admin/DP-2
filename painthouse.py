@@ -1,4 +1,6 @@
 #https://leetcode.com/problems/paint-house/
+#time-o(n)
+#space-o(1)
 class Solution(object):
     def minCost(self, costs):
         """
