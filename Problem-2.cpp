@@ -36,7 +36,7 @@ public:
                 if(j<coins[i-1])
                     dp[i][j] = dp[i-1][j];
                 else
-                    dp[i][j] = dp[i-1][j]+dp[i][j-coins[i-1]];
+                    dp[i][j] = dp[i-1][j]+dp[i][j-coins[i-1]];              //Here i am adding the number of ways when that particular coin is not choosen and i got the final amount with the number of ways when that particular coin is choosen and i got my final amount.
             }
         return dp[coins.size()][amount];
     }
