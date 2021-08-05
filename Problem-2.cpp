@@ -21,7 +21,7 @@ public:
 
 //Time Complexity = O(M*N)
 //Space Complexity = O(M*N)
-//Where N is the size of the vector coins and M is the amount.
+//Where M is the size of the vector coins and N is the amount.
 class Solution {
 public:
     int change(int amount, vector<int>& coins) {
