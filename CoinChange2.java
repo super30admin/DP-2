@@ -1,3 +1,8 @@
+// Time Complexity : O(m x n) where m is coin denominations and n is amount
+// Space Complexity : O(m x n) where m is coin denominations and n is amount
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
 class CoinChange2 {
     public int change(int amount, int[] coins) {
         //null check
