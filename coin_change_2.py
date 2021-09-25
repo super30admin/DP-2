@@ -15,6 +15,4 @@ class Solution:
                     dp[i][j] = dp[i-1][j] + dp[i][j-coins[i-1]]
             
         result = dp[len(dp)-1][len(dp[0]) -1]
-        return result        
         return result
-        
