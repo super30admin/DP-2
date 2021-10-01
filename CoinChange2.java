@@ -3,7 +3,7 @@
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
-class Solution {
+class CoinChange2 {
     public int change(int amount, int[] coins) {
         int n = coins.length + 1;
         int m = amount + 1;
