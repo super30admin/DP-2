@@ -1,0 +1,76 @@
+// Exhaustive Search
+//Time : Exponential 
+//LeetCode: Time Limit Exceed.
+
+class Solution {
+    public int change(int amount, int[] coins) {
+        if(coins==null && coins.length==0)
+            return -1;
+       return helper(coins,amount,0 ); // Recursive Call
+        
+    }
+    private int helper(int[] coins,int amount,int index )
+    {
+        //base
+        if(amount==0) // If amount =0 then the way of choosing coin should be counted so return 1.
+        {
+           return 1; 
+        }
+        if(amount<0||index==coins.length) // If the index pointer reaches out of the array and amount becomes less than return 0 as that way of calculating sum wouldn't be counted.
+            return 0;
+        //logic
+        
+        int case1 = helper(coins,amount, index+1); // For choosing 0
+        
+        int case2 = helper(coins,amount-coins[index],index); // For choosing 1
+        
+    
+        return case1+case2; // Return total correct ways of forming sum equal to amount.
+        
+    }
+}
+
+// Dp 
+Time:O(m*n)
+Space: O(m*n)
+LeetCode : Yes
+
+class Solution {
+    public int change(int amount, int[] coins) {
+        
+        int [][] dp = new int [coins.length+1][amount+1];
+       // dp[0][0]=1;
+        for(int j=0;j<coins.length+1;j++)
+        {
+            dp[j][0]=1; 
+            
+        }
+        for(int j=1;j<amount+1;j++)
+        {
+            dp[0][j]=0;
+            
+        }
+        
+        for(int i=1;i<coins.length+1;i++)
+        {
+            for(int j=1;j<amount+1;j++)
+            {
+                
+               
+                if(j<coins[i-1])
+                {
+                    dp[i][j]=dp[i-1][j];
+                }
+                else
+                {
+                    dp[i][j] = dp[i-1][j] + dp[i][j-coins[i-1]];
+                }
+            }
+        }
+        
+        return dp[coins.length][amount];
+    }
+  
+        
+    }
+
