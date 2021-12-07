@@ -38,16 +38,16 @@ LeetCode : Yes
 class Solution {
     public int change(int amount, int[] coins) {
         
-        int [][] dp = new int [coins.length+1][amount+1];
+        int [][] dp = new int [coins.length+1][amount+1]; 
        // dp[0][0]=1;
         for(int j=0;j<coins.length+1;j++)
         {
-            dp[j][0]=1; 
+            dp[j][0]=1; // Assign row 0 with 1. As getting amount 0 by using coins is going to be 1 (i.e. By not choosing the coin).
             
         }
         for(int j=1;j<amount+1;j++)
         {
-            dp[0][j]=0;
+            dp[0][j]=0; // Assign coloumn o with value 0.As getting amount by using 0 coins is going to be 0.
             
         }
         
@@ -59,16 +59,16 @@ class Solution {
                
                 if(j<coins[i-1])
                 {
-                    dp[i][j]=dp[i-1][j];
+                    dp[i][j]=dp[i-1][j]; // Assign above values of Array until the j values becomes equal to i.
                 }
                 else
                 {
-                    dp[i][j] = dp[i-1][j] + dp[i][j-coins[i-1]];
+                    dp[i][j] = dp[i-1][j] + dp[i][j-coins[i-1]]; // Assign sum of both path 0 and 1 (i.e. By taking the value from above column and subtracting the amount with the index on which we are focusing on.
                 }
             }
         }
         
-        return dp[coins.length][amount];
+        return dp[coins.length][amount]; // return last element of last row.
     }
   
         
