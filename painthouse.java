@@ -53,7 +53,45 @@ S.C -> O(1) //As no space is used. We update in the same array
 
 Second Approach: Keep an array
 */
+/*Recurssion Approach
+public class painthouse {
+    public int minCost(int[][] costs){
+    if(costs == null || costs.length == 0) return 0;
+    //Paint the house with red color
+    int case1 = helper(costs,0,0,0); // helper(array,row index,color,costSoFar)
+    //Paint house blue color
+    int case2 = helper(costs,0,1,0);
+    //Paint house green color
+    int case3 = helper(costs,0,2,0);
+    return Math.min(case1,Math.min(case2,case3));
+    }
+    private int helper(int costs[],int row,int color,int costSofar){
+        //base case
+        if(row==costs.length){
+            return costSofar;
+        }
+        //logic
+        if(color==0){
+            return Math.min(helper(costs,row+1,1, costSofar + costs[row][0]),helper(costs, row + 1,2 , costSofar+ costs[row][0]));
+        }
+        if(color ==1){
+            return Math.min(helper(costs,row+1,2,costSofar + costs[row][1]),helper(costs, row + 1,3 , costSofar+ costs[row][1]));
+        }
+        else{
+            return Math.min(helper(costs,row+1,0,costSofar + costs[row][2]),helper(costs, row + 1,1 , costSofar+ costs[row][2]));
 
+        }
+        return 72819;
+    }
+}
+*/
+// Time Complexity : O(n) //M*N but since m is only 3 colours we are left with n
+// Space Complexity : O(1) //As no space is used. We update in the same array
+// Did this code successfully run on Leetcode : No, As it is premium
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
 public class painthouse {
     public int minCost(int[][] costs){
     if(costs == null || costs.length == 0) return 0;
