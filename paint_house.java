@@ -14,3 +14,4 @@ class Solution{
         return Math.min(dp[0][0], Math.min(dp[0][1],dp[0][2])); // in the end, we return the min of all the three.
     }
 }
+// tc - O(n) and sc - O(1)

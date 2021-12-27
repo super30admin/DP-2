@@ -18,3 +18,4 @@ class Solution{
         return dp[coins.length][amount];
     }
 }
+//tc - o(rows *columns) and sc - o(rows * columns)
