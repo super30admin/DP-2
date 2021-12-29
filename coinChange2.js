@@ -31,3 +31,31 @@ var change = function (amount, coins) {
 };
 
 console.log(change(500, [3, 5, 7, 8, 9, 10, 11]));
+
+// iterative recursion:
+var change = function (amount, coins) {
+  let count = 0;
+  if (!coins.length) return result;
+
+  const helper = (amount, coins, index) => {
+    // base conditions
+    if (amount === 0) {
+      count++;
+      return;
+    }
+
+    if (amount < 0 || index === coins.length) {
+      return;
+    }
+
+    // logic
+    for (let i = index; i < coins.length; i++) {
+      helper(amount - coins[i], coins, i);
+    }
+  };
+
+  helper(amount, coins, 0);
+  return count;
+};
+
+console.log(change(500, [3, 5, 7, 8, 9, 10, 11]));
