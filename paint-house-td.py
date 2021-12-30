@@ -1,5 +1,6 @@
 '''
 TD Soln: TC: O(n) SC: O(n)
+Intuition: Current choice depends on prev choice
 '''
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:

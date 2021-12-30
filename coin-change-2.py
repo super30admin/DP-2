@@ -1,3 +1,11 @@
+'''
+T.C: O(n * m)
+n - total coins, m - amount
+S.C: O(n * m)
+
+Intuition: bottum-up, dp table - cols: range(amount) rows: range(coins)
+
+'''
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
         if not amount:
