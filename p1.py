@@ -11,20 +11,12 @@ is represented by a n X 3 cost matrix where cost for painting house 0 with colou
 and cost for painting house 4 with green colour is cost[4][2] and so on.....calculate the minimum cost to paint all houses.
  try to optimize it for space !! 
 <<<<<<< HEAD
-// Time Complexity : O(N^3)
+// Time Complexity : O(N)
 // Space Complexity : O(1) a 2d array was initialized
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
 =======
 
-
-// Time Complexity :
-// Space Complexity :
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
-
->>>>>>> d96a512abec57b0f2391872dce2a4235e50c43bf
-    
     """
 class Solution(object):
     def minCost(costs, N):
