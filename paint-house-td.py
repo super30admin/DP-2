@@ -1,6 +1,6 @@
 '''
 TD Soln: TC: O(n) SC: O(n)
-Intuition: Current choice depends on prev choice
+Intuition: Current choice depends on prev choice - memoization
 '''
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
