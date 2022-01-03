@@ -22,7 +22,7 @@
 //tc:O(m*n)
 //sc:O(m*n)
 //passed on leetcode: yes
-
+/*
 class Solution {
     public int change(int amount, int[] coins) {
         int [][]dp  = new int [coins.length+1][amount+1];
@@ -45,4 +45,35 @@ class Solution {
         return dp[dp.length-1][dp[0].length-1];
     
     }
+} */
+
+//OPTIMIZING FOR SPACE
+//tc:o(m*n)
+//sc:o(m)
+//passed on leetcode: yes
+class Solution {
+    public int change(int amount, int[] coins) {
+        int [][]dp  = new int [1][amount+1];
+        if (amount==0) return 1;
+        //dp[0][0] = 1;
+        //first column is always 1
+        for (int k=0;k<coins.length;k++) {
+            for (int j=1; j<dp[0].length;j++) {
+                //amount is less than denomination
+                dp[0][0]=1;
+                int den=coins[k];
+                if (j< den) { 
+                    dp[0][j] = dp[0][j];
+                } else {
+                    //the result from above + going the denomination number of steps back
+                    dp[0][j] = dp[0][j]+dp[0][j-den]; 
+                }
+            
+            }
+        }
+        
+        return dp[0][dp[0].length-1];
+    
+    }
 }
+
