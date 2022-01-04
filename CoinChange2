@@ -1,0 +1,79 @@
+//Bruteforce
+//tc:2^n
+/*class Solution {
+    public int change(int amount, int[] coins) {
+        if (coins== null) return 0;
+        return helper(coins, amount,0);
+         
+    }
+    private int helper(int[] coins, int amount, int index) {
+        //base condition
+        if (amount<0 || index == coins.length) return 0;
+        if (amount ==0) return 1; //if amount is 0, that is one way 
+        //logic
+        //choose
+        int case1 = helper(coins,amount-coins[index],index);
+        //notchoose
+        int case2 = helper(coins,amount,index+1); //how many ways you can make amount 0
+        return case1+case2; // total no.of ways will be sum of both paths
+    }
+} */
+
+//tc:O(m*n)
+//sc:O(m*n)
+//passed on leetcode: yes
+/*
+class Solution {
+    public int change(int amount, int[] coins) {
+        int [][]dp  = new int [coins.length+1][amount+1];
+        //dp[0][0] = 1;
+        //first column is always 1
+        for (int i=0;i<dp.length;i++){
+            dp[i][0]=1;
+        }
+        for (int i=1;i<dp.length;i++) {
+            for (int j=1; j<dp[0].length;j++) {
+                //amount is less than denomination
+                if (j< coins[i-1]) { 
+                    dp[i][j] = dp[i-1][j];
+                } else {
+                    //the result from above + going the denomination number of steps back
+                    dp[i][j] = dp[i-1][j]+dp[i][j-coins[i-1]]; 
+                }
+            }
+        }
+        return dp[dp.length-1][dp[0].length-1];
+    
+    }
+} */
+
+//OPTIMIZING FOR SPACE
+//tc:o(m*n)
+//sc:o(m)
+//passed on leetcode: yes
+class Solution {
+    public int change(int amount, int[] coins) {
+        int [][]dp  = new int [1][amount+1];
+        if (amount==0) return 1;
+        //dp[0][0] = 1;
+        //first column is always 1
+        for (int k=0;k<coins.length;k++) {
+            for (int j=1; j<dp[0].length;j++) {
+                //amount is less than denomination
+                dp[0][0]=1;
+                int den=coins[k];
+                if (j< den) { 
+                    dp[0][j] = dp[0][j];
+                } else {
+                    //the result from above + going the denomination number of steps back
+                    dp[0][j] = dp[0][j]+dp[0][j-den]; 
+                }
+            
+            }
+        }
+        
+        return dp[0][dp[0].length-1];
+    
+    }
+}
+
