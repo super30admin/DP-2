@@ -23,4 +23,4 @@ public:
         return case1 + case2;
     }
 };
-// O(n^2) as we are checking all combinations
+// O(2^n) as we are checking all combinations
