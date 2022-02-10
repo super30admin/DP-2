@@ -1,3 +1,10 @@
+"""
+Time Complexity : O(n)
+Space Complexity : O(1)
+"""
+
+
+
 
 def houseColoring():
     arr = [[17,2,11],[16,5,20],[14,13,19]]
