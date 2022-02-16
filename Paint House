@@ -1,0 +1,51 @@
+class Solution {
+
+//R=0  G=1  B=2
+
+    public int minCost(int[][] costs) {
+        int h0red = costs[0][0] + minCosts(costs, 1, 0);
+        int h1green = costs[0][1] + minCosts(costs, 1, 1);
+        int h2blue = costs[0][2] + minCosts(costs, 1, 2);
+        
+        return Math.min(
+            h0red,
+            Math.min(h1green, h2blue)
+        );
+
+
+
+    }
+
+    private int minCosts(int[][] costs, int index, int prevColor){
+         //base condition
+         if(index == costs.length){
+             return 0;
+         }
+         //recursive
+         if(prevColor == 0){    //RED
+            return Math.min(
+                costs[index][1] + minCosts(costs, index+1, 1), //GREEN
+                costs[index][2] + minCosts(costs, index+1, 0) //BLUE        
+                    
+                        
+            );
+         }
+
+         if(prevColor == 1){    //RED
+            return Math.min(
+                costs[index][0] + minCosts(costs, index+1, 0), 
+                costs[index][2] + minCosts(costs, index+1, 2)
+            );
+         }
+
+
+         if(prevColor == 2){    //RED
+            return Math.min(
+                costs[index][0] + minCosts(costs, index+1, 0), 
+                costs[index][1] + minCosts(costs, index+1, 1)
+            );
+    }
+    return -1;
+ }
+}
+        
