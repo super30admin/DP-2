@@ -1,7 +1,8 @@
 //                              Top-down                            Bottom-Up
-// Time Complexity:     O(amount/minimum_denomination)               O(m*n)
+// Time Complexity:     O(amount/minimum_denomination)               O(amount*n)
 // Space Complexity:    O(2^(amount/minimum_denomination))            O(1)
 // Yes, this code ran successfully
+// where n is number of coins
 // No, I didn't face any problem in this problem statement
 
 package src;
