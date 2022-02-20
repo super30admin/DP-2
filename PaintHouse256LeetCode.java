@@ -8,11 +8,11 @@ class PaintHouse256LeetCode
     //Bottom Up Approach
     public int minCost(int[][] costs)
     {
-        int[] prev= costs[0];
+        int[] prev= costs[0];                                           //creating the prev array
 
         for(int i=1; i<costs.length; i++){
 
-            int[] current = new int[costs[0].length];
+            int[] current = new int[costs[0].length];                   //creating the current array
             for(int j=0; j<current.length; j++){
 
                 int min = Integer.MAX_VALUE;
@@ -21,11 +21,11 @@ class PaintHouse256LeetCode
                         min = Math.min(min, prev[k]);
                     }
                 }
-                current[j] = costs[i][j] + min;
+                current[j] = costs[i][j] + min;                 //finding the minimum cost to paint house till that row
             }
             prev = current;
         }
-        return Math.min(prev[0], Math.min(prev[1], prev[2]));
+        return Math.min(prev[0], Math.min(prev[1], prev[2]));           //returning the minimum value from last row
     }
 
 
