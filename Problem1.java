@@ -1,5 +1,5 @@
 // Time Complexity : O(n) where n = number of houses
-// Space Complexity : O(c) where c = number of colors
+// Space Complexity : O(1) since number of colors are 3
 // Did this code successfully run on Leetcode : Yes
 // Any problem you faced while coding this : No
 
