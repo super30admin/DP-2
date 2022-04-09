@@ -2,11 +2,12 @@
 Problem: Paint house leetcode 256
 https://leetcode.com/problems/paint-house/
 
-TC: O(m * n) where m = #rows and n = #cols
-SC = O(2 *  m) = O(m)
+TC: O(m * n) where m = #houses and n = #colors
+SC = O(2 *  m) = O(m). We could also mutate the original matrix itself in which case, no additional space would be required.
 */
 class Solution {
-    public int minCost(int[][] costs) {
+    // With extra space
+    public int minCost1(int[][] costs) {
         if (costs == null || costs.length == 0) return 0;
         if (costs[0] == null || costs[0].length == 0) return 0;
         
@@ -34,5 +35,18 @@ class Solution {
             minCost = Math.min(minCost, dp[(rows-1) % 2][j]);
         }
         return minCost;
+    }
+    // Without extra space and bottom up
+    public int minCost(int[][] costs) {
+        if (costs == null || costs.length == 0) {
+            return 0;
+        }
+        
+        for (int i = costs.length - 2; i >= 0; --i) {
+            costs[i][0] = costs[i][0] + Math.min(costs[i+1][1], costs[i+1][2]);
+            costs[i][1] = costs[i][1] + Math.min(costs[i+1][0], costs[i+1][2]);
+            costs[i][2] = costs[i][2] + Math.min(costs[i+1][0], costs[i+1][1]);
+        }
+        return Math.min(costs[0][0], Math.min(costs[0][1], costs[0][2]));
     }
 }
