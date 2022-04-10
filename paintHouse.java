@@ -1,3 +1,4 @@
+TC : O(c) SC : O(1)
 class Solution {
     public int minCost(int[][] costs) {
 
