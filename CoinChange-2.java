@@ -1,3 +1,9 @@
+//Time complexity O(N*M) N is the no of coins and M is the total amount
+//Space Complexity O(N*M) bcz we have buld a dp[][] 2-D arry od size (n+1)*(m+1)
+//Successfully run in leetcode 
+
+//Used Greedy method to solve
+
 class Solution {
     public int change(int amount, int[] coins) {
         int [][] dp = new int [coins.length+1][amount+1];
