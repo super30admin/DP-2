@@ -1,3 +1,5 @@
+#Time complexity: O(n*amount)
+#Space complexity: O(n*amount)
 class Solution:
     def change(self, amount: int, coins) -> int:
         dp = [[0 for i in range(amount+1)] for j in range(len(coins)+1)]
