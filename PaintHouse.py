@@ -1,3 +1,5 @@
+#Time complexities: O(n)
+#Space complexities: O(1)
 class Solution:
     def minCost(self, costs) -> int:
         costR,costB,costG=costs[len(costs)-1][0],costs[len(costs)-1][1],costs[len(costs)-1][2]
