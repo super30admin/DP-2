@@ -6,7 +6,7 @@ if we encounter the configuration (which we will since the configuration will be
 in top-down recursive DP), we will not again increase the counter, as it has already been
 set for that configuration.
 
-Problems with this program: It run, but gives an incorrect answer
+Problems with this program: It runs, but gives an incorrect answer for some test cases
 
 Did this code run on Leetcode: Yes
 
@@ -34,9 +34,9 @@ class Solution {
         {  
             //We check if the configuration in the hash table already exists, if it doesn't 
             //then we add the configuration to the table and increase the count by 1
-            if(ht.get(coins[coinIndex] + coinIndex + minCoins) == null)
+            if(ht.get(minCoins) == null)
             {
-                ht.put(coins[coinIndex] + coinIndex + minCoins, 1);
+                ht.put(minCoins, 1);
                 count++;
             }
                 
