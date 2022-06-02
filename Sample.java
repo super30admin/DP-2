@@ -36,7 +36,7 @@ class Solution {
     
     }
 }
-//****COIN CHANGE:  PROBLEM 2: Recursive approach:: Time limit exceed error****
+//****COIN CHANGE:Recursive approach:: Time limit exceed error****
 
 class Solution {
     public int coinChange(int[] coins, int amount) {
