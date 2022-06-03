@@ -2,6 +2,7 @@
 # Space Complexity: O(1)
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
+        if costs==None or len(costs)==0: return 0
         n=len(costs)
         cR=costs[n-1][0]
         cG=costs[n-1][1]
