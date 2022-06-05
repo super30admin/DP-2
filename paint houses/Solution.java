@@ -14,8 +14,8 @@ public class Solution {
             dp[i]=0;
         }
         for(int i==0;i<costs.length;i++){
-            int dp1=costs[i][0] + Math.min(dp1,dp2);
-            int dp2=costs[i][1] + Math.min(dp0,dp2);
+            int dp0=costs[i][0] + Math.min(dp1,dp2);
+            int dp2=costs[i][1] + Math.min(dp0,dp3);
             int dp3=costs[i][2] + Math.min(dp1,dp0);
         }
         int min=dp0;
