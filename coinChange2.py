@@ -1,3 +1,8 @@
+# // Time Complexity : O(2^N) (exponential since we are iterating over all the possiblilites)
+# // Space Complexity : stack space for all the calls at max time they will be half of the tree(O(N))
+# // Did this code successfully run on Leetcode : No (TLE)
+# // Any problem you faced while coding this : Nope
+
 class RecursiveSolution:
     def change(self, amount: int, coins: List[int]) -> int:
         if not coins:
@@ -16,6 +21,10 @@ class RecursiveSolution:
         return choose + noChoose
 
 
+# // Time Complexity :O(N)
+# // Space Complexity :O(N)
+# // Did this code successfully run on Leetcode : Yes
+# // Any problem you faced while coding this : Nope
 class DPSolution:
     def change(self, amount: int, coins: List[int]) -> int:
         if not coins:
