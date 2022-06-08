@@ -6,7 +6,6 @@ Problems: Optimizing 2D DP to 1D DP
 '''
 class Solution:
     def change(self, amount: int, coins: list[int]) -> int:
-        result = 0
         length = amount + 1
         dp = [0] * length
         dp[0] = 1
