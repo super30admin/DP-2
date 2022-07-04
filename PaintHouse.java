@@ -1,6 +1,6 @@
 //Time Complexity : O(M X N)
 //Space Complexity : O(1)
-//Code run successfully on LeetCode.
+//Did code run successfully on LeetCode : Yes
 
 public class Solution {
 	public int minCost(int[][] costs) {
