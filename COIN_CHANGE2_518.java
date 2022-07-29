@@ -1,7 +1,7 @@
 // Time Complexity :O(MxN)
 // Space Complexity :O(MxN)
-// Did this code successfully run on Leetcode :
-// Any problem you faced while coding this :
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this :no
 class Solution {
     public int change(int amount, int[] coins) {
         if(coins == null || coins.length == 0) return 0;
