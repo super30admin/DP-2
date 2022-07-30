@@ -1,0 +1,24 @@
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+
+class solPaintHouses {
+    static int minCost(int[][] costs){
+        if(costs == null || costs.length == 0)return 0;
+
+        int n = costs.length;
+        int costR = costs[n-1][0];
+        int costB = costs[n-1][1];
+        int costG = costs[n-1][2];
+
+        for(int i=n-2; i>=0; i--){
+            int tmpcostR = costR;
+            int tmpcostB = costB;
+            costR = costs[i][0] + Math.min(costB, costG);
+            costB = costs[i][1] + Math.min(tmpcostR, costG);
+            costG = costs[i][2] + Math.min(tmpcostR, tmpcostB);
+        }
+
+        return Math.min(costR,Math.min(costB, costG));
+    }
+}
