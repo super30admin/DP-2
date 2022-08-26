@@ -1,3 +1,5 @@
+#TimeComplexity: O(mn) -> m:coins n:amount
+#Space Complexity: O(n) -> n: amount
 class Solution:
     def change (self,amount: int, coins: List[int]) -> int:
         m = len(coins)

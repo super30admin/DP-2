@@ -1,4 +1,5 @@
-#TimeComple
+#TimeComplexity: O(n)
+#spacecomplexity: O(1)
 class Solution:
     def minCost(self,costs: List[List[int]]) -> int:
         n = len(costs)
