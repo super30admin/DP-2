@@ -1,5 +1,5 @@
-// Time complexity: O(n*3) where n is the number of houses
-// Space complexity: O(n*3). This can be further optimized to a O(1). just 3 variables
+// Time complexity: O(n) where n is the number of houses
+// Space complexity: O(n). This can be further optimized to a O(1). just 3 variables
 // Approach: Dynamic programming. Similar to coin change pattern where we need a 2D array to perform the dynamic programming
 
 class Solution {
