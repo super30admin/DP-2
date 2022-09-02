@@ -2,7 +2,7 @@
 
 # # Time Complexity: O(2^n) ~ Exponential
 
-# # Space Complexity: 
+# # Space Complexity: O(2^n)
 
 # class Solution:
 #     def change(self, amount: int, coins: List[int]) -> int:
@@ -27,6 +27,10 @@
 
 
 # DP Solution
+
+# Time: O(n)
+
+# Space: O(n)
 
 class Solution:
     def change(self, amount: int, coins: List[int]) -> int:
