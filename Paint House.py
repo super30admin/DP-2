@@ -18,8 +18,7 @@ def helper(costs, index, color, amount):
     #base
     if index == len(costs):
         return amount
-
-
+        
     #logic
     if color == 0: #red
         return min(helper(costs, index+1, 1, amount+costs[index][0]),
