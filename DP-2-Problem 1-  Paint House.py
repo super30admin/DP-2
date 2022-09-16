@@ -1,5 +1,5 @@
 """
-S30 FAANMG Problem #22 {Easy}
+ FAANMG Problem #22 {Easy}
 
 256. Paint House
 

@@ -1,5 +1,5 @@
 """
-S30 FAANMG Problem #23 {Medium}
+ FAANMG Problem #23 {Medium}
 
 518. Coin Change 2
 
@@ -68,7 +68,7 @@ class Solution(object):
     
 
 """
-S30 FAANMG Problem #23 {Medium}
+ FAANMG Problem #23 {Medium}
 
 518. Coin Change 2
 
