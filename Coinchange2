@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int change(int amount, vector<int>& coins) {
+     
+        int a = amount;
+        int c = coins.size();
+        int max[c+1][a+1];
+        
+        for(int i =0 ;i < c+1; i++){
+            max[i][0] = 1;
+        }
+        
+        
+        for(int i =1 ;i < a+1; i++){
+            max[0][i] = 0;
+        }
+        
+        for( int i =1 ; i< c+1; i++){
+            for(int j =1; j < a+1; j++){
+                if(j < coins[i-1]){
+                    max[i][j] = max[i-1][j];
+                }
+                else{
+                    max[i][j] = max[i-1][j] + max[i][j-coins[i-1]];
+                }
+            }
+        }
+        
+        return max[c][a];
+        
+    }
+};
