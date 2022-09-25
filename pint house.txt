@@ -1,0 +1,23 @@
+class Solution:
+    """
+    @param costs: n x 3 cost matrix
+    @return: An integer, the minimum cost to paint all houses
+    """
+    def min_cost(self, costs: List[List[int]]) -> int:
+        # write your code here
+        if costs==None or len(costs)==0:
+            return 0
+        k=len(costs)
+       # print(k)
+        for i in range(k-2,-1,-1):
+            for j in range(0,3):
+                if j==0:
+                    costs[i][j]=costs[i][j]+min(costs[i+1][1],costs[i+1][2])
+                if j==1:
+                    costs[i][j]=costs[i][j]+min(costs[i+1][0],costs[i+1][2])
+                if j==2:
+                    costs[i][j]=costs[i][j]+min(costs[i+1][0],costs[i+1][1])
+        print(costs)
+        return min(costs[0][0],costs[0][1],costs[0][2])
+TC-O(n) n is length of costs list
+SC-O(n) n is length of costs list
