@@ -36,3 +36,6 @@ class PaintHouse {
         return Math.min(dp[0][0], Math.min(dp[0][1], dp[0][2]));
     }
 }
+
+//Time Complexity: O(n) // column constant 3
+//Space Complexity: O(n) 

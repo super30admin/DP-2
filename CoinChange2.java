@@ -34,3 +34,6 @@ class CoinChange2 {
         return dp[m][n];
     }
 }
+
+//Time Complexity: O(m * n) // m = number of coins, n = amount
+//Space Complexity: O(m * n) 
