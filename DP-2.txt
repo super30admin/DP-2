@@ -1,0 +1,32 @@
+All test cases passed
+Paint House
+def min_cost(self, costs: List[List[int]]) -> int:
+        # write your code here
+        if len(costs)==0:
+            return 0
+        n=len(costs)
+        m=3
+        dp = [[0 for x in range(m)] for y in range(n)]
+        for i in range(0,m):
+            dp[n-1][i]=costs[n-1][i]
+        for j in range(n-2,-1,-1):
+            dp[j][0]=costs[j][0]+min(dp[j+1][1],dp[j+1][2])
+            dp[j][1]=costs[j][1]+min(dp[j+1][0],dp[j+1][2])
+            dp[j][2]=costs[j][2]+min(dp[j+1][0],dp[j+1][1])
+        return min(dp[0][0],min(dp[0][1],dp[0][2]))
+Coin Change II
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        m=len(coins)+1
+        n=amount+1
+        l = [[0 for x in range(n)] for y in range(m)] 
+        for i in range(0,m):
+            for j in range(0,n):
+                if j==0:
+                    l[i][j]=1
+                elif i!=0:
+                    if j<coins[i-1]:
+                        l[i][j]=l[i-1][j]
+                    else:
+                        l[i][j]=l[i-1][j]+l[i][j-coins[i-1]]
+        return l[m-1][n-1]
