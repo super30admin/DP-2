@@ -4,7 +4,7 @@
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
 
-class Solution {
+class CoinChange2 {
     public int change(int amount, int[] coins) {
          if(coins.length==0 || amount==0) return 1;
         int dp[][]=new int[coins.length+1][amount+1];

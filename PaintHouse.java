@@ -2,7 +2,7 @@
 // Space Complexity : O(N)
 // Did this code successfully run on Leetcode : yes
 // Any problem you faced while coding this : no
-public class Problem1 {
+public class PaintHouse {
 
     public int minCost(int[][] costs){
 
