@@ -1,0 +1,31 @@
+Paint House
+#tc: O(n)
+#sc: O(n)
+class Solution:
+    def minCost(self, costs: List[List[int]]) -> int:
+        n = len(costs)
+        houses = [[0]*3 for _ in range(n)]
+        houses[0] = costs[0]
+        for i in range(1, n):
+            houses[i][0] = costs[i][0] + min(houses[i-1][1],houses[i-1][2])
+            houses[i][1] = costs[i][1] + min(houses[i-1][0],houses[i-1][2])
+            houses[i][2] = costs[i][2] + min(houses[i-1][1],houses[i-1][0])
+            
+        # print(houses) # see how the costs are progagated
+        
+        return min(houses[-1])
+Coin Change II
+#tc: O(ca) Time 
+#sc: O(a) Space
+class Solution:
+    def change(self, amount: int, coins: List[int]) -> int:
+        if amount == 0:
+            return 1
+
+        dp = [0] * (amount + 1)
+        dp[0] = 1
+        for c in coins:
+            for a in range(c, amount + 1):
+                dp[a] += dp[a - c]
+
+        return dp[amount]
