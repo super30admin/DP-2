@@ -1,7 +1,9 @@
 // TC : O(n)
 // SC : O(n)
 // works in leetcode
-class coinChangeMaxWays {
+//we dont need to create matrix. Just prev and curr  array is enough bcz only prev row need for curr row calculation
+
+class CoinChangeMaxWays {
 
     static  public int change(int amount, int[] coins) {
         int [] prevMaxWays =   new int[amount+1];
@@ -20,6 +22,7 @@ class coinChangeMaxWays {
             prevMaxWays = curr;
 
         }
+        //last element of the array will have ways to get to amount
         return prevMaxWays[amount];
 
     }
