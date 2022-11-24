@@ -1,11 +1,9 @@
 """
     Problem Statement: Coin Change 2: Return the number of combinations that make up the amount.
 
-    Approach: 
+    Time complexity: O(m * n)
 
-    Time complexity: 
-
-    Space complexity: 
+    Space complexity: O(m * n)
 
     Accepted on LeetCode? Yes! 
 
