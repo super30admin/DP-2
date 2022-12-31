@@ -1,0 +1,36 @@
+// Time Complexity : o( nm)
+// Space Complexity : o(nm)
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : no
+
+
+// Your code here along with comments explaining your approach
+/*
+*  At any house, can pick any color
+*  Create a 2-D dp array.
+*  cost to paint house  i with color j = Minimum of the costs to paint the previous house except that color
+* */
+
+
+class Solution {
+    public int minCost(int[][] costs) {
+
+        int n = costs.length;
+        int m = costs[0].length;
+        int [][] dp = new int[n][m];
+        for(int i =0; i< n ; i++){
+            for(int j =0; j<m; j++ ){
+                if(i==0 ){
+                    dp[i][j] = costs[i][j];
+                } else if(j==0){
+                    dp[i][j] = Math.min( dp[i-1][1] , dp[i-1][2]) + costs[i][j];
+                }else if(j==1){
+                    dp[i][j] = Math.min( dp[i-1][0] , dp[i-1][2]) + costs[i][j];
+                }else if(j==2){
+                    dp[i][j] = Math.min( dp[i-1][1] , dp[i-1][0]) + costs[i][j];
+                }
+            }
+        }
+        return Math.min(dp[n-1][0], Math.min(dp[n-1][1], dp[n-1][2]) );
+    }
+}
