@@ -24,7 +24,27 @@ class Solution {
         }
 
         return dp[coins.length][amount];
+
+        // For Exhaustive/Recursive Approach
+        // return helper(coins,coins.length-1,amount);
         
     }   
     
+    /*  Exhaustive/Recursive Approach
+     * private int helper(int[] coins,int idx,int amount){
+        // base case
+        if(amount<0) return 0;
+        if(idx<0 && amount>0) return 0;
+        if(idx<0 && amount==0) return 1;
+
+        // logic
+        // choose
+        int case1 = helper(coins,idx,amount-coins[idx]);
+
+        // not choose
+        int case2 = helper(coins,idx-1,amount);
+        
+        return case1+case2; 
+    }
+     */
 }
