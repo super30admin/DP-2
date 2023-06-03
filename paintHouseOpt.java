@@ -8,7 +8,6 @@ public class painHouseDP {
         int n = costs.length;
         //create a new dp with rows = no. of houses
         //columns = no of colors
-        int [][] dp = new int[n][3];
         //first initialize the last row of dp with the array values as it is
         int costR = costs[n-1][0];
         int costB = costs[n-1][1];
