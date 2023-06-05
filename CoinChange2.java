@@ -1,4 +1,24 @@
  class CoinChange2 {
+     //implemeting dp tabulation bottom up space optimized
+     //time coimplexity number of coin denomination * amount
+     //space complexity: amount
+     public int change(int amount, int[] coins) {
+         int[] dp = new int[amount + 1];
+
+         dp[0] = 1;
+
+         for(int row = 0; row < coins.length; row++){
+             for(int col = 0; col <= amount; col++) {
+                 if(col >= coins[row]){
+                     dp[col]+=dp[col - coins[row]];
+                 }
+             }
+         }
+
+         return dp[amount];
+     }
+
+
      // Time Complexity : coins.length * amount
      // Space Complexity : coins.length * amount
      // Did this code successfully run on Leetcode : yes
