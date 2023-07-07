@@ -1,0 +1,18 @@
+// time complexity O(n) where n is number of houses to paint
+// space complexity O(1)
+class Solution {
+    public int minCost(int[][] costs) {
+        
+        int costRed =0, costGreen=0, costBlue=0;
+        for (int i =0; i< costs.length; i++) {
+            int tempRed = costRed;
+            costRed = costs[i][0] + Math.min(costGreen, costBlue);
+
+            int tempGreen = costGreen;
+            costGreen = costs[i][1] + Math.min(costBlue, tempRed);
+
+            costBlue = costs[i][2] + Math.min(tempGreen, tempRed);
+        }
+        return Math.min(costRed, Math.min(costBlue, costGreen));
+    }
+}
