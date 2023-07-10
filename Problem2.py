@@ -11,7 +11,7 @@ class Solution:
         dp[1] = max(nums[0], nums[1])
         #Logic starts from 2nd index
         for i in range(2, len(nums)):
-            #if we don't choose nums[i] then dp[i-1]
+            #if we don't choose nums[i] then choose dp[i-1]
             #else nums[i]+ Value of 2 elements before that in dp array
             #take maximum of both
             dp[i] = max(dp[i-1], nums[i]+dp[i-2])
