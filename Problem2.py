@@ -1,18 +1,16 @@
-#Time Complexity: O(n)
-#Space Complexity: O(n)
-
+#Coin change
+#Time Complexity: O(n^2)
+#Space Complexity: O(n^2)
 class Solution:
-    def rob(self, nums: List[int]) -> int:
-        dp=[0 for i in range(len(nums))]
-        #if len is less than 2
-        if len(nums)<=2:
-            return max(nums)
-        dp[0]=nums[0]
-        dp[1] = max(nums[0], nums[1])
-        #Logic starts from 2nd index
-        for i in range(2, len(nums)):
-            #if we don't choose nums[i] then choose dp[i-1]
-            #else nums[i]+ Value of 2 elements before that in dp array
-            #take maximum of both
-            dp[i] = max(dp[i-1], nums[i]+dp[i-2])
-        return dp[-1]
+    def change(self, amount: int, coins: List[int]) -> int:
+        dp = [[0] * (amount+1) for _ in range(len(coins)+1)]
+        dp[0][0] = 1
+        for i in range(1, len(coins)+1):
+            for j in range(0, amount+1):
+                if coins[i-1] > j:
+                #If coin is less than j then copy the values from previous row
+                    dp[i][j]=dp[i-1][j]
+                else:
+                #answer at prev row + answer at i-1 index before that
+                    dp[i][j]= dp[i-1][j] + dp[i][j-coins[i-1]]
+        return dp[-1][-1]
