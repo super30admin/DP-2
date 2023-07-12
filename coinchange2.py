@@ -16,7 +16,7 @@ class Solution:
             return cache[(i, a)]
 
         return dfs(0, 0)
-
+    
         dp = [[0] * (len(coins) + 1) for i in range(amount + 1)]
         dp[0] = [1] * (len(coins) + 1)
         for a in range(1, amount + 1):
@@ -44,17 +44,17 @@ class Solution:
 
 
 if __name__ == "__main__":
-    # Create an instance of Solution
+   
     sol = Solution()
 
     amount = 5
     coins = [1, 2, 5]
-    print(sol.change(amount, coins))    # Output: 4
+    print(sol.change(amount, coins))    
 
     amount = 3
     coins = [2]
-    print(sol.change(amount, coins))    # Output: 0
+    print(sol.change(amount, coins))   
 
     amount = 10
     coins = [10]
-    print(sol.change(amount, coins))    # Output: 1
+    print(sol.change(amount, coins))   
