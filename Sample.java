@@ -94,21 +94,21 @@
 
     //dp with no extra space
     public int minCost(int[][] costs) {
-        if(costs==null || costs.length==0) return 0;
+        if(costs==null || costs.length==0) return 0; //nullcheck
         int n=costs.length;
         //int[] dp= new int[3];
-        int costR=costs[n-1][0];
-        int costB=costs[n-1][1];
-        int costG=costs[n-1][2];
+        int costR=costs[n-1][0]; //red color cost
+        int costB=costs[n-1][1]; //blue color cost
+        int costG=costs[n-1][2]; //green color cost
 
         for(int i=n-2;i>=0;i--){
-            int tempR= costR;
-            costR=costs[i][0] + Math.min(costB,costG);
+            int tempR= costR; //our costR is going to change and we need old costR for computation of mincost for other colors.
+            costR=costs[i][0] + Math.min(costB,costG); //we cannot select neighbor house with same color hence other 2 colors.
             int tempB= costB;
             costB= costs[i][1] + Math.min(tempR,costG);
             costG= costs[i][2] + Math.min(tempR,tempB);
         }
-        return Math.min(costR, Math.min(costB,costG));
+        return Math.min(costR, Math.min(costB,costG)); //give out minimum possible cost for each path starting with all colors.
     }
 
     // //dp with paths
@@ -174,3 +174,104 @@
     //     //return minimum of top row which is best possible value of painting houses
     //     return Math.min(dp[0][0], Math.min(dp[0][1],dp[0][2]));
     // }
+
+
+
+//---------------------COIN CHANGE 2-----------------------------------
+//--------------PAINT HOUSE-----------------------//
+// Time Complexity :O(n^2)
+// Space Complexity :O(n)
+// Did this code successfully run on Leetcode :yes
+// Any problem you faced while coding this : Coming up with initial matrix and 1 in first element of matrix, then was easy
+
+
+// Your code here along with comments explaining your approach
+
+//exhaustive
+    // public int change(int amount, int[] coins) {
+    //     if(coins==null) return 0;
+    //     return helper(coins, 0, amount);
+    // }
+    // private int helper(int [] coins, int i, int amount){
+    //     //base
+    //     if(amount==0)
+    //         return 1;
+    //     if(amount<0 || i==coins.length)
+    //         return 0;
+
+    //     //logic
+    //     //unchoose coin
+    //     int case0= helper(coins, i+1, amount);
+
+    //     //choose coin
+    //     int case1= helper(coins, i, amount-coins[i]);
+    //     return case0+case1;
+    // }
+
+    //exhaustive with void recursion
+    // int count=0;
+    // public int change(int amount, int[] coins) {
+    //     if(coins==null) return 0;
+    //     helper(coins, 0, amount);
+    //     return count;
+    // }
+    // private void helper(int [] coins, int i, int amount){
+    //     //base
+    //     if(amount==0){
+    //         count+=1;
+    //         return;
+    //     }
+    //     if(amount<0 || i==coins.length)
+    //         return;
+
+    //     //logic
+    //     //unchoose coin
+    //     helper(coins, i+1, amount);
+
+    //     //choose coin
+    //     helper(coins, i, amount-coins[i]);
+    // }
+
+    // dp
+    // public int change(int amount, int[] coins) {
+    //     int m=amount;
+    //     int n=coins.length;
+    //     int[][] dp=new int[n+1][m+1];
+    //     dp[0][0]=1;
+
+    //     for(int i=1;i<=n;i++){
+    //         for(int j=0;j<=m;j++){
+
+    //             //if amount < denom
+    //             if(j< coins[i-1]){ //i-1 because we took 0 as one extra amount in matrix
+    //                 //zero case
+    //                 dp[i][j]=dp[i-1][j];
+    //             }
+    //             else
+    //                 dp[i][j]=dp[i-1][j]+ dp[i][j - coins[i-1]];
+    //         }
+    //     }
+    //     return dp[n][m];
+    // }
+
+    // dp with single array
+    public int change(int amount, int[] coins) {
+        int m=amount;
+        int n=coins.length;
+        int[] dp=new int[m+1];
+        dp[0]=1;
+
+        for(int i=1;i<=n;i++){
+            for(int j=0;j<=m;j++){
+
+                //if amount < denom
+                if(j< coins[i-1]){ //i-1 because we took 0 as one extra amount in matrix
+                    //zero case
+                    dp[j]=dp[j];
+                }
+                else// if greater than or equal to then take the element j-denomination of i-1 
+                    dp[j]=dp[j]+ dp[j - coins[i-1]]; //Here we add element in above column and the below possible outcome, because we have to give out all possiible outcomes and not the minimum
+            }
+        }
+        return dp[m];
+    }
