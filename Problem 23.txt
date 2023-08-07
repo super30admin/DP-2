@@ -1,0 +1,21 @@
+//Paint house
+
+class Solution {
+    public int minCost(int[][] costs) {
+        int N = costs.length;
+        
+        int r = costs[0][0];
+        int b = costs[0][1];
+        int g = costs[0][2];
+        
+        for(int i = 1; i < N; i++){
+            int prevR = r;
+            int prevB = b;
+            int prevG = g;
+            r = Math.min(prevB, prevG) + costs[i][0];
+            b = Math.min(prevR, prevG) + costs[i][1];
+            g = Math.min(prevR, prevB) + costs[i][2];
+        }
+        return Math.min(r, Math.min(b, g));
+    }
+}
