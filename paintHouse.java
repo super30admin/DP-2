@@ -1,5 +1,6 @@
 // Time Complexity : O (m)  where m is number of houses
-// Space Complexity : O (1) no extra space if we update costs matrix itself, if we cannot mutate same matrix, then use dp matrix with extra space (m * n), m = num of houses, n = num of colors
+// Space Complexity : O (1) no extra space if we update costs matrix itself, if we cannot mutate same matrix, 
+// then use dp matrix with extra space (m), m = num of houses, as there are 3 colors only 
 // Did this code successfully run on Leetcode : -
 // Any problem you faced while coding this : No
 
