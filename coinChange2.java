@@ -1,3 +1,8 @@
+// Time Complexity : O (m * n)  where m is number of rows, n is number of columns
+// Space Complexity : O (m * n) for the dp matrix
+// Did this code successfully run on Leetcode : yes
+// Any problem you faced while coding this : No
+
 public class coinChange2 {
 
     public static int coinChangeCombos(int[] coins, int amount){
