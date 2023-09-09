@@ -1,3 +1,8 @@
+// Time Complexity : O(n) where n is length of costs and we have constant number of colors
+// Space Complexity : O(1) constant space as we only have three constant variables to modify
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
 public class Problem1 {
     public int minCost(int[][] costs) {
         if(costs.length == 0 || costs == null) return 0;

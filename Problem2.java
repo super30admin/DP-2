@@ -1,7 +1,7 @@
-// Time Complexity : O(n) we loop through all characters of string s
-// Space Complexity : O(1) we store upto 52 characters in the hashSet (all lowercase and uppercase letters)
+// Time Complexity : O(n * k) where n is length of coins and k is amount
+// Space Complexity : O(n * k) we store dp array of size n * k
 // Did this code successfully run on Leetcode : Yes
-// Any problem you faced while coding this : No
+// Any problem you faced while coding this : Yes, coming up with dp[i][j] equation did not come right away
 
 public class Problem2 {
     public int change(int amount, int[] coins) {
