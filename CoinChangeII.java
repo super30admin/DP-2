@@ -1,3 +1,5 @@
+//TC - O(n*k)
+//SC(O(n*k))
 public class CoinChangeII {
 
         public int change(int amount, int[] coins) {
