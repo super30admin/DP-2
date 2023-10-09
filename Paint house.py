@@ -4,6 +4,7 @@
 #recursive
 #TC: O(k*2^n) ,n is no of houses; levels in tree is 2*n, there are k such trees
 ###TLE Error
+#ex: [[5,6,5],[15,8,8],[13,19,7],[16,1,9],[15,2,18],[13,18,8],[4,1,3],[3,3,3],[16,14,14],[7,6,1],[7,17,17],[8,20,10],[12,16,1],[8,11,8],[14,7,12],[8,18,13],[6,2,3],[16,1,11],[4,2,10],[17,16,17],[1,8,17],[1,12,17],[1,11,10]]
 #SC: O(k*2^n) recursive call stacks
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
@@ -26,9 +27,8 @@ class Solution:
         return min(costsR, min(costsB, costsG))
     
 #DP
-#TC: O(n) ,n is no of houses; levels in tree is 2*n, there are k such trees
-###TLE Error
-#SC: O(1) , no data strcture used only local vars
+#TC: O(n) ,n is no of houses; 
+# #SC: O(1) , no auxiliary data strcture used 
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:  
         n = len(costs)
@@ -39,10 +39,9 @@ class Solution:
         if len(costs) == 0: return 0
         return min(costs[0]) 
     
-#Space optimzation! Bottom up.
-#TC: O(n) ,n is no of houses; levels in tree is 2*n, there are k such trees
-###TLE Error
-#SC: O(1) , no data strcture used only local vars
+# #Space optimzation! Bottom up.
+# #TC: O(n) ,n is no of houses; 
+# #SC: O(1) , no data strcture used only local vars
 class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
         n = len(costs)
