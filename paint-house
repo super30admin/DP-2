@@ -1,0 +1,16 @@
+#time complexity: O(n)
+#space complexity: O(1)
+class Solution:
+    def minCost(self, costs:List[int]):
+        n = len(costs)
+        costR = costs[n-1][0]
+        costB = costs[n-1][1]
+        costG = costs[n-1][2]
+        for i in range(n-2,-1,-1):
+            tempR = costR
+            costR = costs[i][0] + min(costB, costG)
+            tempB=costB
+            costB = costs[i][1] + min(tempR, costB)
+            costG = costs[i][2] + min(tempR, tempB)
+
+        return min(costR, min(costB, costG))
