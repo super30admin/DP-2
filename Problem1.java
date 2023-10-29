@@ -1,7 +1,63 @@
 // Time Complexity : O(colours^houses)
+// Space Complexity : Not clear......height of tree= houses;  
+// At each level we have 2d array (colours*houses) for storing temporary values
+// Did this code successfully run on Leetcode : No
+// Any problem you faced while coding this :  This is Brute Force so Time limit exceed. Ran on VS Code
+
+
+// Simple Recursion with backtracking Top-Down Approach
+
+class Solution0{
+    boolean checkIt(int[][] temp) {
+        for (int i = 1; i < temp.length; i++) {
+            for (int j = 0; j < temp[0].length; j++) {
+                //if we have same colur painted for the next house return false
+                if (temp[i][j] != 0 && temp[i - 1][j] != 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+
+    public int housePaint(int[][] cost, int row, int[][] temp) {
+
+        if (row == cost.length) {
+            return 0;
+        }
+
+        // variable to store the minimum cost to paint from i house
+        int minimum = Integer.MAX_VALUE;
+        int i = row;
+
+        // start from colour 0 to last
+        for (int j = 0; j < cost[0].length; j++) {
+            //first paint the i house with j colour
+            temp[i][j] = cost[i][j];
+            // if it is feasible move to next step
+            if (checkIt(temp)) {
+                // obtain the cost to paint from the next house
+                int minAmount = temp[i][j] + housePaint(cost, row + 1, temp);
+                //update the minimum from different colour paths
+                minimum = Math.min(minAmount, minimum);
+            }
+            //unpaint the house
+            temp[i][j] = 0;
+        }
+        return minimum;
+    }
+}
+
+
+
+
+
+// Time Complexity : O(colours^houses)
 // Space Complexity : O(colours)
 // Did this code successfully run on Leetcode : No
-// Any problem you faced while coding this :  This is Brute Force so Time limit exceed
+// Any problem you faced while coding this :  This is Brute Force so Time limit exceed. Ran on vs code
 
 
 // Simple Recursion with backtracking Top-Down Approach
