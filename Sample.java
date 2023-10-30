@@ -204,4 +204,76 @@ class Solution {
    
 }
 
+//House Robber
+//Using Recursion
+class Solution {
+    //Using Recursion
+    public int rob(int[] nums) {
+
+        return helper(nums,0,0);
+        
+    }
+
+    private int helper(int[] nums,int i,int robbings){
+        //base
+        if(i>= nums.length) return robbings;
+
+        //logic
+        //dont choose
+        int case1 = helper(nums,i+1,robbings); //I can rob the next house
+        
+        //choose
+        int case2 = helper(nums,i+2,robbings + nums[i]) ; //I can not rob the next house that's why I did i+2 and add the cost of robbbery to the robbings
+
+        return Math.max(case1,case2); //return the maximum robbings 
+    }
+}
+
+//Using 1D Dp
+class Solution {
+    //Using Recursion
+    public int rob(int[] nums) {
+
+        if(nums == null || nums.length<2) return nums[0];
+
+        int n = nums.length;
+        int[] dp = new int[n];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0],nums[1]);
+        for(int i=2;i<n;i++){
+            dp[i] = Math.max(dp[i-1],nums[i] + dp[i-2]);
+        }
+
+        return dp[n-1];
+        
+    }
+
+    
+}
+
+//Using No extra Space
+class Solution {
+    //Using no space
+    public int rob(int[] nums) {
+
+        if(nums == null || nums.length<2) return nums[0];
+
+        int n = nums.length;
+        int prev = nums[0];
+        int curr = Math.max(nums[0],nums[1]);
+        for(int i=2;i<n;i++){
+            int temp = curr;
+            curr = Math.max(curr,nums[i] + prev);
+            prev= temp;
+        }
+
+        return curr;
+        
+    }
+
+    
+}
+
+
+
 
