@@ -1,3 +1,5 @@
+//Time complexity = O(n)
+//Space Complexity = O(n)
 public class PaintHouse {
     
   /*  public int minCost(int[][] costs){
