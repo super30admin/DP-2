@@ -1,5 +1,5 @@
 """
-Time Complexity : O(mn) m is the number of colors and n is the
+Time Complexity : O(mn) m is the number of colors and n is the number of houses
 Space Complexity : O(n) we are using another array to store the result of an operation
 Did this code successfully run on Leetcode : Yup
 Any problem you faced while coding this : No issues faced
