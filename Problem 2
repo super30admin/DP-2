@@ -1,0 +1,21 @@
+#Coin change II
+
+class Solution(object):
+    def change(self, amount, coins):
+        """
+        :type amount: int
+        :type coins: List[int]
+        :rtype: int
+        """
+        # Initialize a list to store the number of combinations for each amount
+        dp = [0] * (amount + 1)
+        dp[0] = 1  # There is one way to make amount 0, which is by not selecting any coin
+
+        # Iterate through each coin denomination
+        for coin in coins:
+            # Update the dp array for each amount starting from the coin value
+            for i in range(coin, amount + 1):
+                dp[i] += dp[i - coin]
+
+        # The final result is the number of combinations for the target amount
+        return dp[amount]
