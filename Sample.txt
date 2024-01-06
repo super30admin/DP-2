@@ -1,0 +1,17 @@
+Problem: Number of ways for coin change
+Time Complexity : O(n^2)
+Space Complexity : O(1)
+Did this code successfully run on Leetcode : yes
+Any problem you faced while coding this : no
+
+Your code here along with comments explaining your approach:
+We recursively calculate all the number of ways and build a matrix, the last value in matrix is the answer
+
+Problem: Minimum cost to paint the house
+Time Complexity : O(n)
+Space Complexity : O(m*n)
+Did this code successfully run on Leetcode : yes
+Any problem you faced while coding this : no
+
+Your code here along with comments explaining your approach:
+We recursively calculate all the costs and build a matrix, the last value in matrix is the answer
