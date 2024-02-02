@@ -1,6 +1,8 @@
 /*
   Time complexity: O(N)
   Space complexity: O(1)  (modifying the input array)
+
+  Approach: From each house, if we are coloring it with R, we can take the min cost gain by coloring the next house G or B
 */
 
 int minCost(vector<vector<int>>& costs) {
