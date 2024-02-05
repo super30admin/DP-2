@@ -1,12 +1,11 @@
 // TC - O(3*2^N)
-// SC - O(3*2^N)
+// SC - O(N)
 
 // Constraints:
 //     costs.length == n
 //     costs[i].length == 3
 //     1 <= n <= 100
 //     1 <= costs[i][j] <= 20
-
 
 public class PaintHouseRecursion {
     class Solution {
