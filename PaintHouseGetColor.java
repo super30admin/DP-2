@@ -66,9 +66,13 @@ public class PaintHouseGetColor {
             System.out.println("House " + i + " : " + j);
             j = nextHouseColorMatrix[i][j];
         }
+        // House 0 : 1
+        // House 1 : 2
+        // House 2 : 1
 
         return Math.min(redCost, Math.min(greenCost, blueCost));
     }
+
     public static void main(String[] args) {
         PaintHouseGetColor solution = new PaintHouseGetColor();
         solution.minCost(new int[][] { { 17, 2, 17 }, { 16, 16, 5 }, { 14, 3, 19 } });
