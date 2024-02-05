@@ -1,5 +1,5 @@
-// TC - O(MN)
-// SC - O(MN)
+// TC - O(3N)
+// SC - O(3N)
 
 // Constraints:
 //     costs.length == n
