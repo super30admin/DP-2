@@ -1,0 +1,34 @@
+//time complexity: O(n*amount); where n - no of denominations
+//space complexity: O(amount)
+
+//approach:
+//initialize all values of dp array from 0 to amount to value 0 
+//this array represent the no of ways the amount in index can be get
+//so the idea is that if we want dp[11] then we add all ways froms dp[11-coin]so on for all amounts 
+
+//problems faced:
+//initiallykep dp array as int and it happenend integer overflow as final result may be 32_INTEGER BUT INTERMIDIATE SOLUTIONS may exceed the count
+//so for checking keep a higher bound before storing the value 
+
+class Solution {
+public:
+    int change(int amount, vector<int>& coins) {
+        //here using int_64 to take into account as underlying amounts can exceed 32_bit integer
+        vector<long long> dp(amount+1, 0); //initialize no of ways for all amounts from 0, amount to zero;
+        const long long INF = 1e18; // higher bound
+        //base case
+        dp[0] = 1;//amount zero has one way by not selecting anything
+
+        //as all are initialized to zero and we update if any amount has ways otherwise it will remain zero
+
+        for(int coin : coins){
+            for(int i = coin; i <= amount; i++){
+                dp[i] += dp[i - coin];
+                if(dp[i] > INF){
+                    dp[i] = INF; //to prevent overflow
+                }
+            }
+        }
+        return (int)dp[amount];        
+    }
+};
