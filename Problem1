@@ -1,0 +1,43 @@
+import java.lang.*;
+
+class GFG {
+
+  static int minCost(int costs[][], int N)
+  {
+    if(costs == null || costs.length == 0){
+        return 0;
+    }
+    //As each row represents the cost of same house with different paints 
+    //creating a dp array same as cost array
+    int dp[][] = new int[N][costs[0].length];
+    //Adding last house costs to dp array
+    for (int i = 0; i < costs[0].length; i++) {
+        dp[N -1][i] = costs[N-1][i];
+    }
+    //traversing from n-2 row(last but one house) and tracking the min of that house by adding min(nth house with remaining colours)
+    for (int i = N-2; i >=0; i--) { 
+        dp[i][0] = costs[i][0] + Math.min(dp[i+1][1],dp[i+1][2]);
+        dp[i][1] = costs[i][1] + Math.min(dp[i+1][0],dp[i+1][2]);
+        dp[i][2] = costs[i][2] + Math.min(dp[i+1][1],dp[i+1][0]);       
+    }
+    //now in every row we have min cost of painting of all the houses which are below its row
+    //so returning min of 1st row
+    return(Math.min(dp[0][0],Math.min(dp[0][1], dp[0][2])));
+     
+  }
+
+
+  public static void main(String[] args)
+  {
+
+    int costs[][] = { { 14, 2, 11 },
+                     { 11, 14, 5 },
+                     { 14, 3, 10 } };
+
+    int N = costs.length;
+
+    System.out.println(minCost(costs, N)); 
+  }
+}
+
+// This code is contributed by Kingash.
