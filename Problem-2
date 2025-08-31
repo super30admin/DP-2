@@ -1,0 +1,25 @@
+// Time Complexity : O(m*n) where m-> number of coins, n-> amount
+// Space Complexity : O(n)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : None
+
+// Use a 1d dp array to keep track of the number of ways to make an amount using the given coins at any point
+// for every amount greater than or equal to the coin value we update dp[j] by adding dp[j-coins[i]] to it
+// return dp[amount] which will contain the number of ways to make the amount using the given coins 
+
+
+class Solution {
+    public int change(int amount, int[] coins) {
+        int m = coins.length;
+        int n = amount;
+        int[] dp = new int[n+1];
+        dp[0] = 1;
+        for(int i = 0; i < m; i++) {
+            for(int j = 1; j <= n; j++) {
+                if(j >= coins[i])
+                    dp[j] = dp[j] + dp[j - coins[i]];
+            }
+        }
+        return dp[n];
+    }
+}
