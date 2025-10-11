@@ -1,18 +1,3 @@
-/**
- * Leet Code : https://leetcode.com/problems/paint-house/submissions/1798030723/
- *
- * Approach:
- * This solution uses top-down dynamic programming (recursion with memoization) to find the minimum cost to paint all houses
- * such that no two adjacent houses have the same color. Each house can be painted with one of three colors, and the cost for
- * each color is given. We recursively try all colorings for each house, ensuring that no two adjacent houses have the same color.
- *
- * - The memoization table (memo) stores the minimum cost for each house and color combination to avoid redundant calculations.
- * - For each house, we try painting it with each color, and recursively compute the minimum cost for the rest of the houses.
- * - The answer is the minimum cost among the three color choices for the first house.
- *
- * Time Complexity: O(n), where n is the number of houses (since each subproblem is solved only once for each house and color).
- * Space Complexity: O(n) for the memoization table.
- */
 import java.util.Arrays;
 
 /**
