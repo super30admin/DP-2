@@ -1,0 +1,30 @@
+Time complexity - O(nm) where n is number of coins and m is the amount
+Space complexity - O(nm)
+
+class Solution {
+public:
+    int change(int amount, vector<int>& coins) {
+        int numberOfCoins=coins.size();
+        
+        int matrix[numberOfCoins+1][amount+1];
+        
+        for (int i=0;i<=amount;i++) {
+            matrix[0][i]=0;
+        }
+        for (int i=0;i<=coins.size();i++) {
+            matrix[i][0]=1;
+        }
+        
+        for (int i=1;i<=numberOfCoins;i++) {
+            for (int j=1;j<amount+1;j++) {
+                if (coins[i-1]>j) {
+                    matrix[i][j]=matrix[i-1][j];
+                } else if (coins[i-1]<=j){
+                    matrix[i][j]=matrix[i-1][j] + matrix[i][j-coins[i-1]];
+                }
+            }
+        }
+        return matrix[numberOfCoins][amount];
+        
+    }
+};
