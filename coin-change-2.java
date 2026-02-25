@@ -103,25 +103,25 @@ class Solution {
 // Explanation: Here I recursively try both choices (take or skip coin) without memoization. 
 // This causes repeated recomputation of the same states, leading to exponential time complexity.
 
-// class Solution {
-//     public int change(int amount, int[] coins) {
-//         return helper(amount, coins, 0);  
+class Solution {
+    public int change(int amount, int[] coins) {
+        return helper(amount, coins, 0);  
         
-//     }
+    }
 
-//     private int helper(int amount, int[] coins, int idx){
-//         // base
-//         if(amount<0|| idx>=coins.length) return 0;
-//         if(amount ==0) {
-//             return 1;
-//         }
+    private int helper(int amount, int[] coins, int idx){
+        // base
+        if(amount<0|| idx>=coins.length) return 0;
+        if(amount ==0) {
+            return 1;
+        }
 
-//         // no choose
-//         int case1= helper(amount, coins, idx+1);
+        // no choose
+        int case1= helper(amount, coins, idx+1);
 
-//         // choose
-//         int case2= helper(amount-coins[idx], coins, idx);
+        // choose
+        int case2= helper(amount-coins[idx], coins, idx);
 
-//         return case1+case2;
-//     }
-// }
+        return case1+case2;
+    }
+}
