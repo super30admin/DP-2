@@ -1,7 +1,7 @@
 // Coin CHange 2
 // time complexity : O(mxn)
 //space complexity: o(mxn)
-Every matrix index assingin number of values  and for line 25 we can see a repitive problem and add those instead of calculating number of combination again
+//Every matrix index assingin number of values  and for line 25 we can see a repitive problem and add those instead of calculating number of combination again
 
 class Solution {
     public int change(int amount, int[] coins) {
