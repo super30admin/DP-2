@@ -1,0 +1,99 @@
+
+class Solution {
+    public int change(int amount, int[] coins) {
+        // I have to find in how many ways amount can be made with given coins.
+        if (coins == null || coins.length == 0)
+            return 0;
+        //recursive approach
+        //return helper(amount, coins, 0);// time 2^m+n, space(m+n)
+        //DP approach
+        return dpSolutionWithOptimalSpace(amount, coins);
+
+    }
+
+    /**
+     * Time : 2^m+n
+      Space: maximum height of the tree (m + n)
+      where m =coins.length, n=amount
+     */
+    int helper(int amount, int[] coins, int index) {
+        //base 
+        //when amount becomes 0 it means we found 1 way.
+        if (amount == 0)
+            return 1;
+        if (amount < 0 || index >= coins.length)
+            return 0;
+        //logic
+        //not choose current index coin
+        int notChooseCase = helper(amount, coins, index + 1);
+        int chooseCase = helper(amount - coins[index], coins, index);
+
+        //I need all the ways from chhose case + not choose case;
+        return notChooseCase + chooseCase;
+
+    }
+
+    /**
+     * Time : m*n
+      Space: m*n
+      where m =coins.length, n=amount
+     */
+    int dpSolution(int amount, int[] coins) {
+        //rows represnt the ined for the coins
+        int rows = coins.length + 1;
+        //col reprent the amount to make
+        int cols = amount + 1;
+        int[][] dp = new int[rows][cols];
+        dp[0][0] = 1;
+
+        for (int row = 1; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                //if the amount <  denomination of coin then just dont choose current coin is just above row same column
+                if (coins[row - 1] > col) {
+                    dp[row][col] = dp[row - 1][col];
+                } else {
+                    /* dp[row][col] is nothing but in how many ways i can make amount/col with coins till coins[row-1] coins
+                    1. dont choose current coin. value from above 
+                    2. choose current coin(go denomination of coin steps back).
+                    ==>from above+ same row denomination of coins steps back.*/
+                    dp[row][col] = dp[row - 1][col] + dp[row][col - coins[row - 1]];
+                }
+
+            }
+        }
+        return dp[rows - 1][cols - 1];
+
+    }
+
+    /**
+     * Time : m*n
+      Space: n
+      where m =coins.length, n=amount
+     */
+    int dpSolutionWithOptimalSpace(int amount, int[] coins) {
+        //rows represnt the ined for the coins
+        int rows = coins.length + 1;
+        //col reprent the amount to make
+        int cols = amount + 1;
+        int[] dp = new int[cols];
+        dp[0] = 1;
+
+        for (int row = 1; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                //if the amount <  denomination of coin then just dont choose current coin is just above row same column
+                if (coins[row - 1] > col) {
+                    dp[col] = dp[col];
+                } else {
+                    /* dp[row][col] is nothing but in how many ways i can make amount/col with coins till coins[row-1] coins
+                    1. dont choose current coin. value from above 
+                    2. choose current coin(go denomination of coin steps back).
+                    ==>from above+ same row denomination of coins steps back.*/
+                    dp[col] = dp[col] + dp[col - coins[row - 1]];
+                }
+
+            }
+        }
+        return dp[cols - 1];
+
+    }
+}
